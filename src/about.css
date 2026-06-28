@@ -1,0 +1,454 @@
+/* about.css */
+
+:root {
+  --bg-color: #f2f1ec;
+  --text-color: #0c0c0c;
+  --accent-color: #111;
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+/* Navigation and Marquee */
+@keyframes dsc-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.dsc-marquee-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #0b1121;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+.dsc-marquee-content {
+  display: flex;
+  width: fit-content;
+  animation: dsc-marquee 25s linear infinite;
+}
+.dsc-marquee-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.dsc-marquee-star {
+  color: #14a3a3;
+  margin: 0 32px;
+  font-size: 14px;
+}
+.home-nav-header {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  pointer-events: none;
+  font-family: 'Inter', sans-serif;
+}
+.home-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.home-nav-logo img {
+  height: 80px;
+  object-fit: contain;
+  transform: translateY(-10px);
+}
+.home-nav-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 9999px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: auto;
+}
+.home-nav-pill a {
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  color: rgba(255,255,255,0.8);
+}
+.home-nav-pill a:hover, .home-nav-pill a.active {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.home-nav-cta {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+.home-join-btn {
+  background: #fff;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.home-join-btn:hover {
+  background: #f3f4f6;
+}
+.mobile-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 16px;
+}
+.mobile-menu-btn svg {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+}
+@media (min-width: 768px) {
+  .hidden.md\:flex { display: flex; }
+  .hidden.md\:block { display: block; }
+  .md\:hidden { display: none; }
+}
+@media (max-width: 767px) {
+  .hidden.md\:flex { display: none; }
+  .hidden.md\:block { display: none; }
+  .md\:hidden { display: block; }
+}
+
+/* Typography */
+.massive-text {
+  font-family: var(--font-display);
+  font-size: 10vw;
+  line-height: 0.85;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -2px;
+}
+
+/* Hero Section */
+.about-hero {
+  position: relative;
+  width: 100%;
+  padding-top: 40px; /* space for marquee */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-hero .massive-text {
+  color: #000000;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Checkered overlay mask */
+.checkered-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.8) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.8) 75%, rgba(255,255,255,0.8)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.8) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.8) 75%, rgba(255,255,255,0.8));
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.intro-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem 3rem 1rem 3rem;
+  gap: 3rem;
+}
+
+.intro-col {
+  flex: 1;
+}
+
+.intro-col p {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  max-width: 250px;
+}
+
+.text-left p {
+  margin-left: auto;
+}
+
+.text-right p {
+  margin-right: auto;
+}
+
+.center-image {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.center-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+/* Latest Work */
+.latest-work {
+  padding: 1rem 0 0 0;
+}
+
+.latest-work .massive-text {
+  color: #000000;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.work-item {
+  width: 100%;
+  overflow: hidden;
+}
+
+.work-item.full-width {
+  grid-column: span 2;
+  height: 60vh;
+}
+
+.work-item.half-width {
+  grid-column: span 1;
+  height: 50vh;
+}
+
+.work-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.work-item:hover img {
+  transform: scale(1.05);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.primary-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.primary-btn:hover {
+  background-color: #333;
+}
+
+/* Partners */
+.partners {
+  padding: 8rem 0;
+  text-align: center;
+  background-color: #0c0c0c;
+  color: #f2f1ec;
+}
+
+.partners .massive-text {
+  color: #f2f1ec;
+}
+
+.logos-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  opacity: 0.6;
+  letter-spacing: 2px;
+  transition: opacity 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+/* Insights */
+.insights {
+  padding: 8rem 3rem;
+  background: url('../assets/creative-ai/240_F_1944108276_a6VjWgiq6nOvxGLMWom38LcWkHZYYY0d.png') no-repeat center center;
+  background-size: cover;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.insight-card {
+  border-top: 2px solid var(--text-color);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-date {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.insight-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.insight-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+
+/* Bottom Mask */
+.bottom-mask {
+  height: 100vh;
+  width: 100%;
+  background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mask-text-container {
+  background-color: var(--bg-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: screen; /* This creates the cutout effect if background is white/light */
+}
+
+.mask-text {
+  font-family: var(--font-display);
+  font-size: 30vw;
+  line-height: 0.8;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+/* The actual trick for text cutout over image:
+   The container has white background (var(--bg-color)).
+   The text is black.
+   Mix-blend-mode screen makes black transparent (showing the image behind) and white stays white.
+   Since our bg is #f2f1ec (off-white), it will slightly tint the image, which is perfectly fine.
+*/
+.bottom-mask {
+  background-color: #000;
+}
+.mask-text-container {
+  background-color: var(--bg-color);
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 768px) {
+  .intro-block {
+    flex-direction: column;
+  }
+  .work-grid, .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  .work-item.half-width {
+    grid-column: span 2;
+  }
+}
