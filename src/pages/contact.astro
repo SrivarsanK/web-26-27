@@ -172,10 +172,46 @@ import '../styles/contact.css';
         deviceType = 'tablet';
       }
       
-      const container = document.querySelector('.contact-container');
+      const container = document.querySelector('.contact-container') as HTMLElement;
       if (container) {
         container.setAttribute('data-device-type', deviceType);
       }
+
+      // Run canvas visual alignment
+      alignLayoutWithCanvas();
+    }
+
+    // Canvas visual alignment to ensure 50% card overlap
+    function alignLayoutWithCanvas() {
+      const watermark = document.querySelector('.contact-watermark') as HTMLElement;
+      const container = document.querySelector('.contact-container') as HTMLElement;
+      if (!watermark || !container) return;
+
+      // Reset container padding-top temporarily for accurate baseline layout measurement
+      container.style.paddingTop = '0px';
+
+      const computedStyle = window.getComputedStyle(watermark);
+      const fontSize = computedStyle.fontSize;
+      const fontFamily = computedStyle.fontFamily;
+      const fontWeight = computedStyle.fontWeight || '900';
+
+      // Create a canvas context to measure capital letters precisely
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.font = `${fontWeight} ${fontSize} ${fontFamily}`;
+        const metrics = ctx.measureText('CONTACT');
+        
+        // Calculate typographic visual center
+        const inkHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+      }
+
+      // Calculate visual vertical midpoint of watermark
+      const elementHeight = watermark.offsetHeight;
+      const visualCenter = watermark.offsetTop + (elementHeight / 2);
+
+      // Push container content down so the top of grid aligns exactly with the watermark midpoint
+      container.style.paddingTop = `${visualCenter}px`;
     }
 
     // Run initially and on resize
