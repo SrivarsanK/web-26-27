@@ -833,6 +833,11 @@ textarea.form-input {
   line-height: 1.4;
 }
 
+/* Prevent horizontal scrollbars on the page while allowing background cutouts to overflow */
+body {
+  overflow-x: hidden;
+}
+
 /* Background Renaissance Art Cutouts (Cyber-Baroque/Neoclassical Fusion) */
 .contact-art-cutouts {
   position: absolute;
@@ -842,7 +847,6 @@ textarea.form-input {
   height: 100%;
   pointer-events: none;
   z-index: 1; /* Floating behind interactive cards (z-index 10) but above standard background */
-  overflow: hidden;
 }
 
 .art-cutout-wrap {
