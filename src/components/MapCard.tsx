@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
-const BASE_FACTOR = 3886.99342512166;
+const BASE_FACTOR = 3887.355107080536;
 const BASE_ZOOM   = 0;
 
 function buildSrc(zoom: number) {
   const factor = BASE_FACTOR / Math.pow(2, zoom);
-  return `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d${factor}!2d80.1807376!3d13.0322541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1719598000000!5m2!1sen!2sin`;
+  return `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d${factor}!2d80.1770955!3d13.0396001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1719614400000!5m2!1sen!2sin`;
 }
 
 export default function MapCard() {
@@ -34,6 +34,7 @@ export default function MapCard() {
           position: 'absolute',
           top: '-70px',
           left: '-70px',
+          pointerEvents: 'none', /* Prevent manual dragging to keep custom pin locked to address */
         }}
         allowFullScreen
         loading="lazy"

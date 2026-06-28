@@ -462,7 +462,7 @@ body::before {
 /* Custom Themed Map Pinpoint Overlay */
 .custom-theme-pinpoint {
   position: absolute;
-  top: calc(50% + 10px);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -100%);
   z-index: 10;
