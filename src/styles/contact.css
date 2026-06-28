@@ -29,20 +29,6 @@ body {
   position: relative;
 }
 
-/* Bioluminescent radial glow */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1000px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(26, 92, 69, 0.22) 0%, rgba(26, 92, 69, 0) 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
 /* Watermark */
 .contact-watermark {
   position: absolute;
