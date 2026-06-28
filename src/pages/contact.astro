@@ -6,6 +6,7 @@ import ContactFormCard from '../components/ContactFormCard.tsx';
 import ContactWatermark from '../components/ContactWatermark.tsx';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
+import ContactArtCutouts from '../components/ContactArtCutouts.tsx';
 import '../styles/contact.css';
 ---
 
@@ -50,6 +51,9 @@ import '../styles/contact.css';
     <div class="contact-layout-wrapper">
       <!-- Decorative Background Watermark (Interactive React Island) -->
       <ContactWatermark client:load />
+
+      <!-- Interactive Background Art Cutouts (React Island) -->
+      <ContactArtCutouts client:load />
 
       <div class="contact-grid">
         <section class="left-col">
