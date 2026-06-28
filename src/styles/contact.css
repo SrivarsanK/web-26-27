@@ -250,6 +250,8 @@ body::before {
   gap: 64px;
   align-items: stretch;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .left-col,
@@ -359,6 +361,8 @@ body::before {
   display: flex;
   gap: 16px;
   margin-bottom: 28px;
+  position: relative;
+  z-index: 5;
 }
 
 .social-icon-btn {
