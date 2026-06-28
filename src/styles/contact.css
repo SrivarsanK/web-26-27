@@ -243,7 +243,7 @@ body::before {
   display: flex;
   flex-direction: row;
   gap: 64px;
-  align-items: flex-start;
+  align-items: stretch;
   width: 100%;
 }
 
@@ -256,6 +256,13 @@ body::before {
 
 .left-col {
   padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-col {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive scaling overrides */
@@ -381,7 +388,10 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 12px;
-  height: 340px;
+  /* height is now controlled by flex-grow to match ContactFormCard */
+  flex: 1;
+  min-height: 300px;
+  height: auto !important;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -521,6 +531,7 @@ body::before {
   padding: 40px;
   position: relative;
   overflow: hidden;
+  flex: 1;
 }
 
 .form-group {
