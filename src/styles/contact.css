@@ -3,13 +3,13 @@
 /* contact.css */
 
 :root {
-  --bg-color: #080d0b;
+  --bg-color: #030d0f;
   --text-color: #e8ede9;
   --text-muted: #6b7b72;
-  --accent-color: #1a5c45;
-  --accent-glow: #1dd1a1;
-  --card-bg: rgba(17, 23, 20, 0.3);
-  --input-bg: rgba(14, 19, 16, 0.45);
+  --accent-color: #0d6e6e;
+  --accent-glow: #14a3a3;
+  --card-bg: rgba(6, 24, 27, 0.3);
+  --input-bg: rgba(3, 13, 15, 0.45);
   --font-body: 'Inter', sans-serif;
   --container-pad-top: 160px;
 }
@@ -21,7 +21,6 @@
 }
 
 body {
-  background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -38,7 +37,7 @@ body::before {
   transform: translateX(-50%);
   width: 1000px;
   height: 500px;
-  background: radial-gradient(circle, rgba(26, 92, 69, 0.22) 0%, rgba(26, 92, 69, 0) 70%);
+  background: radial-gradient(circle, rgba(20, 163, 163, 0.12) 0%, rgba(20, 163, 163, 0) 70%);
   pointer-events: none;
   z-index: 1;
 }
@@ -76,7 +75,9 @@ body::before {
   left: 0;
   right: 0;
   height: 40px;
-  background-color: #0b1121;
+  background: rgba(3, 13, 15, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #fff;
   display: flex;
   align-items: center;
