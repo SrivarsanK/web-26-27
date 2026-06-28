@@ -3,38 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/contact.css';
 ---
 
-<BaseLayout title="Contact | Get in Touch with GDSC">
-  <!-- Marquee Ticker -->
-  <div class="dsc-marquee-container">
-    <div class="dsc-marquee-content">
-      {Array(3).fill(null).map(() => (
-        <div style="display: flex; align-items: center">
-          <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
-          <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
-          <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
-          <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
-        </div>
-      ))}
-    </div>
-  </div>
+<BaseLayout title="Contact — AI Automation SaaS" description="Get in touch with our team to transform your business operations with custom AI automation workflows.">
+  <!-- Decorative Background Watermark -->
+  <div class="contact-watermark">Contact</div>
 
-  <!-- Navigation -->
-  <header class="home-nav-header">
-    <a href="/" class="home-nav-logo">
-      <img src="/creative-ai/club logo.png" alt="DSC Logo" />
+  <!-- Decorative Corner Circuit Board Graphics -->
+  <svg class="corner-graphic corner-top-left" width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 L100,50 L150,100 L220,100" stroke="rgba(232, 237, 233, 0.4)" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M60,0 L60,80 L100,120 L150,120" stroke="rgba(232, 237, 233, 0.25)" stroke-width="1" stroke-linecap="round" />
+    <circle cx="220" cy="100" r="3" fill="#1dd1a1" />
+    <circle cx="150" cy="120" r="2" fill="rgba(232, 237, 233, 0.6)" />
+  </svg>
+
+  <svg class="corner-graphic corner-top-right" width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M250,50 L150,50 L100,100 L30,100" stroke="rgba(232, 237, 233, 0.4)" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M190,0 L190,80 L150,120 L100,120" stroke="rgba(232, 237, 233, 0.25)" stroke-width="1" stroke-linecap="round" />
+    <circle cx="30" cy="100" r="3" fill="#1dd1a1" />
+    <circle cx="100" cy="120" r="2" fill="rgba(232, 237, 233, 0.6)" />
+  </svg>
+
+  <!-- Centered Frosted Glass Navbar -->
+  <header class="saas-navbar">
+    <a href="/" class="nav-logo-gear" aria-label="Home Dashboard">
+      <!-- Muted Gear Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+      </svg>
     </a>
-    <nav class="home-nav-pill hidden md:flex">
+
+    <nav class="nav-links-container hidden md:flex">
       <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/#domains">Domains</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/team">Team</a>
+      <a href="/#integrations">Integrations</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#logs">Logs</a>
       <a href="/contact" class="active">Contact</a>
     </nav>
-    <div class="home-nav-cta">
-      <a href="#" class="home-join-btn hidden md:block">Join Us</a>
-      <button class="mobile-menu-btn md:hidden" id="menu-open-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+    <div style="display: flex; align-items: center;">
+      <a href="#" class="nav-cta-btn">
+        <span>Get Template</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+
+      <!-- Mobile Hamburger (Visible on small displays) -->
+      <button class="mobile-menu-btn md:hidden" id="menu-open-btn" style="margin-left: 12px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" x2="20" y1="12" y2="12" />
           <line x1="4" x2="20" y1="6" y2="6" />
           <line x1="4" x2="20" y1="18" y2="18" />
@@ -53,212 +70,132 @@ import '../styles/contact.css';
     </button>
     <div class="mobile-menu-links">
       <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/#domains">Domains</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/team">Team</a>
+      <a href="/#integrations">Integrations</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#logs">Logs</a>
       <a href="/contact" class="active">Contact</a>
     </div>
   </div>
 
-  <!-- Contact Container -->
+  <!-- Contact Section Container -->
   <main class="contact-container">
-    <div class="contact-header">
-      <h1>Let's build something together</h1>
-      <p>Have questions about our events, workshops, or domains? Reach out and we'll get back to you as soon as possible.</p>
-    </div>
-
     <div class="contact-grid">
-      <!-- Left Column: Form -->
-      <section class="contact-card">
-        <!-- Success Notification Overlay -->
-        <div class="success-overlay" id="form-success-overlay">
-          <div class="success-icon">✓</div>
-          <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Message Sent!</h2>
-          <p style="color: var(--text-muted); margin-bottom: 24px;">Thank you for reaching out. We will get back to you shortly.</p>
-          <button class="submit-btn" style="max-width: 200px;" id="reset-form-btn">Send Another Message</button>
+      <!-- Left Column: Content + Stacked Info Cards -->
+      <section class="left-col">
+        <div class="pill-badge">
+          <!-- Small abstract icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+          <span>Contact</span>
         </div>
 
-        <h2 class="info-title">Send a Message</h2>
-        <form id="contact-form" novalidate>
-          <div class="form-group">
-            <input type="text" id="name" name="name" class="form-input" placeholder=" " required />
-            <label for="name" class="form-label">Full Name</label>
-          </div>
+        <h1 class="left-title">Get in touch</h1>
+        <p class="left-subtext">Have questions or ready to transform your business with AI automation?</p>
 
-          <div class="form-group">
-            <input type="email" id="email" name="email" class="form-input" placeholder=" " required />
-            <label for="email" class="form-label">Email Address</label>
-          </div>
+        <!-- Stoptags of Stacked Cards -->
+        <div class="cards-stack">
+          <!-- Card 1: Email -->
+          <a href="mailto:johnnykyorov@gmail.com" class="contact-info-card">
+            <div class="card-left-group">
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div class="card-text">
+                <h4>Email us</h4>
+                <p>johnnykyorov@gmail.com</p>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </a>
 
-          <div class="form-group">
-            <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required />
-            <label for="subject" class="form-label">Subject</label>
-          </div>
+          <!-- Card 2: Call -->
+          <a href="tel:5011234567" class="contact-info-card">
+            <div class="card-left-group">
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </div>
+              <div class="card-text">
+                <h4>Call us</h4>
+                <p>(501) 123-4567</p>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </a>
 
-          <div class="form-group">
-            <textarea id="message" name="message" class="form-input" placeholder=" " required></textarea>
-            <label for="message" class="form-label">Message</label>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">
-            <span>Send Message</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px;">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-            </svg>
-          </button>
-        </form>
+          <!-- Card 3: Location -->
+          <a href="https://maps.google.com" target="_blank" class="contact-info-card">
+            <div class="card-left-group">
+              <div class="card-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="card-text">
+                <h4>Our location</h4>
+                <p>Crosby Street, NY, US</p>
+              </div>
+            </div>
+            <div class="card-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </div>
+          </a>
+        </div>
       </section>
 
-      <!-- Right Column: Info & Map -->
-      <section class="contact-info">
-        <div class="contact-card">
-          <h2 class="info-title">GDSC Chapter Info</h2>
-
-          <div class="info-item">
-            <div class="info-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </div>
-            <div class="info-text">
-              <h4>Email us directly</h4>
-              <p><a href="mailto:dscsrmrmp@gmail.com" style="color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s;">dscsrmrmp@gmail.com</a></p>
-            </div>
+      <!-- Right Column: Card with Contact Form -->
+      <section class="right-col">
+        <div class="contact-form-card">
+          <!-- Success Notification Overlay -->
+          <div class="success-overlay" id="form-success-overlay">
+            <div class="success-icon">✓</div>
+            <h2 style="font-size: 22px; font-weight: 600; margin-bottom: 8px; color: var(--text-color);">Message sent</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px; max-width: 250px; line-height: 1.5;">Our automation experts will contact you within 24 hours.</p>
+            <button class="submit-btn" style="max-width: 200px; background: rgba(232, 237, 233, 0.05); color: var(--text-color); border: 1px solid rgba(232,237,233,0.1);" id="reset-form-btn">Go Back</button>
           </div>
 
-          <div class="info-item">
-            <div class="info-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <input type="text" id="name" name="name" class="form-input" placeholder="Name" required />
             </div>
-            <div class="info-text">
-              <h4>Our Location</h4>
-              <p>SRM Institute of Science and Technology, Ramapuram Campus, Chennai, Tamil Nadu - 600089</p>
+
+            <div class="form-group">
+              <input type="email" id="email" name="email" class="form-input" placeholder="Email" required />
             </div>
-          </div>
 
-          <div class="info-item">
-            <div class="info-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
+            <div class="form-group">
+              <textarea id="message" name="message" class="form-input" placeholder="Message" required></textarea>
             </div>
-            <div class="info-text">
-              <h4>Core Working Hours</h4>
-              <p>Mon - Fri: 9:00 AM - 4:00 PM</p>
-            </div>
-          </div>
 
-          <h3 class="info-title" style="font-size: 16px; margin-top: 40px; margin-bottom: 16px;">Connect with us</h3>
-          <div class="info-socials">
-            <a href="https://x.com/dscsrmrmp" target="_blank" aria-label="X">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-
-            <a href="https://linkedin.com/company/dscsrmrmp" target="_blank" aria-label="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-
-            <a href="https://instagram.com/dscsrmrmp" target="_blank" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-              </svg>
-            </a>
-          </div>
-
-          <!-- Animated custom SVG Map Beacon -->
-          <div class="map-container">
-            <svg width="100%" height="100%" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="background-color: #050811;">
-              <!-- Grid background -->
-              <defs>
-                <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255, 255, 255, 0.03)" stroke-width="1"/>
-                </pattern>
-                <radialGradient id="beacon-glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#14a3a3" stop-opacity="0.4"/>
-                  <stop offset="100%" stop-color="#14a3a3" stop-opacity="0"/>
-                </radialGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-
-              <!-- Stylized Road Maps -->
-              <path d="M-50,60 L450,140" stroke="rgba(255,255,255,0.06)" stroke-width="8" />
-              <path d="M120,-50 L220,300" stroke="rgba(255,255,255,0.06)" stroke-width="6" />
-              <path d="M300,-50 L100,300" stroke="rgba(255,255,255,0.04)" stroke-width="4" />
-
-              <!-- Beacon Pulse Outer Ring -->
-              <circle cx="180" cy="110" r="30" fill="url(#beacon-glow)">
-                <animate attributeName="r" values="10;45;10" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite" />
-              </circle>
-
-              <!-- Central Node Beacon -->
-              <circle cx="180" cy="110" r="6" fill="#14a3a3" />
-              <circle cx="180" cy="110" r="12" stroke="#14a3a3" stroke-width="2" opacity="0.8">
-                <animate attributeName="r" values="6;16;6" dur="1.5s" repeatCount="indefinite" />
-              </circle>
-
-              <!-- Tooltip Panel -->
-              <rect x="195" y="75" width="165" height="50" rx="8" fill="rgba(10, 15, 29, 0.9)" stroke="rgba(20, 163, 163, 0.4)" stroke-width="1" />
-              <text x="205" y="94" fill="#ffffff" font-family="Inter, sans-serif" font-size="11" font-weight="700">SRM IST Ramapuram</text>
-              <text x="205" y="112" fill="#9ca3af" font-family="Inter, sans-serif" font-size="10">GDSC SRM RMP Chapter</text>
-            </svg>
-          </div>
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span>Submit</span>
+            </button>
+          </form>
         </div>
       </section>
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="contra-footer" id="contact-footer">
-    <div class="contra-content">
-      <h2 class="contra-logo" style="font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-size: 2.5rem; letter-spacing: normal;">Developer Students Club</h2>
-      <p class="contra-subtitle">SRM IST, Ramapuram</p>
-      
-      <div class="contra-socials">
-        <a href="https://x.com/dscsrmrmp" target="_blank" aria-label="X">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-          </svg>
-        </a>
-
-        <a href="https://linkedin.com/company/dscsrmrmp" target="_blank" aria-label="LinkedIn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-          </svg>
-        </a>
-        <a href="https://instagram.com/dscsrmrmp" target="_blank" aria-label="Instagram">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-      </div>
-
-      <div class="contra-links">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/#domains">Domains</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/contact">Contact</a>
-      </div>
-    </div>
-
-    <video src="https://framerusercontent.com/assets/hmg5dFU33RwVgzS4V0wrSxuKJ3E.mp4" class="contra-art" autoplay loop muted playsinline></video>
-  </footer>
 
   <script>
     // Form and Success Overlay elements
@@ -286,22 +223,22 @@ import '../styles/contact.css';
         // Disable button & show loading state
         submitBtn.disabled = true;
         const btnText = submitBtn.querySelector('span');
-        if (btnText) btnText.textContent = 'Sending...';
+        if (btnText) btnText.textContent = 'Submitting...';
 
-        // Simulate 1.5s delay
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        // Simulate 1.2s delay
+        await new Promise((resolve) => setTimeout(resolve, 1200));
 
         // Show success overlay
         successOverlay.classList.add('active');
       });
 
-      // Reset form on clicking "Send Another Message"
+      // Reset form on clicking "Go Back"
       resetBtn.addEventListener('click', () => {
         form.reset();
         successOverlay.classList.remove('active');
         submitBtn.disabled = false;
         const btnText = submitBtn.querySelector('span');
-        if (btnText) btnText.textContent = 'Send Message';
+        if (btnText) btnText.textContent = 'Submit';
       });
     }
 
