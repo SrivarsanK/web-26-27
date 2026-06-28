@@ -58,6 +58,46 @@ body::before {
   text-transform: uppercase;
 }
 
+/* Marquee Styles */
+@keyframes dsc-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.dsc-marquee-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-color: #0b1121;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+.dsc-marquee-content {
+  display: flex;
+  width: fit-content;
+  animation: dsc-marquee 25s linear infinite;
+}
+.dsc-marquee-item {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.dsc-marquee-star {
+  color: #14a3a3;
+  margin: 0 32px;
+  font-size: 14px;
+}
+
 /* Navigation and Header (copied from about.css to match universal site layout) */
 .home-nav-header {
   position: absolute;
