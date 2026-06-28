@@ -219,7 +219,7 @@ body::before {
   right: 20px;
 }
 
-/* Grid Layout */
+/* Flex Layout on Container */
 .contact-container {
   max-width: 1000px;
   margin: 0 auto;
@@ -228,6 +228,9 @@ body::before {
   z-index: 10;
   min-height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-grid {
@@ -235,13 +238,31 @@ body::before {
   grid-template-columns: 0.9fr 1.1fr;
   gap: 64px;
   align-items: start;
+  width: 100%;
 }
 
-@media (max-width: 968px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+/* Dynamic device layout scaling based on window resolution detector */
+.contact-container[data-device-type="mobile"] {
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+.contact-container[data-device-type="mobile"] .contact-grid {
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+
+.contact-container[data-device-type="tablet"] {
+  padding-top: 130px;
+  padding-bottom: 60px;
+}
+.contact-container[data-device-type="tablet"] .contact-grid {
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+
+.contact-container[data-device-type="desktop"] {
+  padding-top: 160px;
+  padding-bottom: 80px;
 }
 
 /* Left Column Info */

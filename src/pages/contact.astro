@@ -242,6 +242,26 @@ import '../styles/contact.css';
   </footer>
 
   <script>
+    // Device type function to determine layout bounds
+    function updateDeviceType() {
+      const width = window.innerWidth;
+      let deviceType = 'desktop';
+      if (width < 768) {
+        deviceType = 'mobile';
+      } else if (width < 1024) {
+        deviceType = 'tablet';
+      }
+      
+      const container = document.querySelector('.contact-container');
+      if (container) {
+        container.setAttribute('data-device-type', deviceType);
+      }
+    }
+
+    // Run initially and on resize
+    window.addEventListener('resize', updateDeviceType);
+    updateDeviceType();
+
     // Form and Success Overlay elements
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
