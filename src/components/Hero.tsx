@@ -78,7 +78,7 @@ export default function Hero() {
   const [cursorPos, setCursorPos] = useState({ x: -999, y: -999 });
   const mouse = useRef({ x: -999, y: -999 });
   const smooth = useRef({ x: -999, y: -999 });
-  const rafRef = useRef<number>();
+  const rafRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
