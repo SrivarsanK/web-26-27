@@ -373,11 +373,11 @@ body::before {
 
 .map-card iframe {
   border: 0;
-  width: 100%;
-  height: calc(100% + 38px);
+  width: calc(100% + 140px);
+  height: calc(100% + 140px);
   position: absolute;
-  top: -6px;
-  left: 0;
+  top: -60px;
+  left: -70px;
   border-radius: 12px;
 }
 
@@ -400,7 +400,7 @@ body::before {
 /* Custom Themed Map Pinpoint Overlay */
 .custom-theme-pinpoint {
   position: absolute;
-  top: calc(50% + 13px);
+  top: calc(50% + 10px);
   left: 50%;
   transform: translate(-50%, -100%);
   z-index: 10;
@@ -659,4 +659,51 @@ textarea.form-input {
 .mobile-menu-links a:hover,
 .mobile-menu-links a.active {
   color: var(--accent-glow) !important;
+}
+
+/* Custom Glassmorphic Camera Control Panel */
+.map-camera-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 12px;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background-color: rgba(17, 23, 20, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 12;
+}
+
+.map-control-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+  padding: 0;
+  outline: none;
+}
+
+.map-control-btn:hover {
+  background: rgba(29, 209, 161, 0.15);
+  border-color: var(--accent-glow);
+  color: var(--accent-glow);
+}
+
+.map-control-btn:active {
+  transform: scale(0.95);
 }

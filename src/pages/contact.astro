@@ -307,6 +307,36 @@ import '../styles/contact.css';
       });
     }
 
+    // Custom Map Camera Controls (Zoom In / Out)
+    const zoomInBtn = document.getElementById('map-zoom-in');
+    const zoomOutBtn = document.getElementById('map-zoom-out');
+    const mapIframe = document.querySelector('.map-card iframe') as HTMLIFrameElement;
+
+    let zoomLevel = 0; // 0 represents the base zoom level (factor = 3886.99342512166)
+    
+    if (zoomInBtn && zoomOutBtn && mapIframe) {
+      zoomInBtn.addEventListener('click', () => {
+        if (zoomLevel < 3) {
+          zoomLevel++;
+          updateMapZoom();
+        }
+      });
+
+      zoomOutBtn.addEventListener('click', () => {
+        if (zoomLevel > -3) {
+          zoomLevel--;
+          updateMapZoom();
+        }
+      });
+
+      function updateMapZoom() {
+        const baseFactor = 3886.99342512166;
+        const factor = baseFactor / Math.pow(2, zoomLevel);
+        const newSrc = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d${factor}!2d80.1807376!3d13.0322541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1719598000000!5m2!1sen!2sin`;
+        mapIframe.setAttribute('src', newSrc);
+      }
+    }
+
     // Form and Success Overlay elements
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
