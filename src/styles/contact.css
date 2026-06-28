@@ -11,6 +11,7 @@
   --card-bg: rgba(17, 23, 20, 0.3);
   --input-bg: rgba(14, 19, 16, 0.45);
   --font-body: 'Inter', sans-serif;
+  --container-pad-top: 160px;
 }
 
 * {
@@ -45,12 +46,13 @@ body::before {
 /* Watermark */
 .contact-watermark {
   position: absolute;
-  top: 90px;
+  --watermark-size: clamp(4.5rem, 15vw, 11rem);
+  font-size: var(--watermark-size);
+  top: calc(var(--container-pad-top) - (var(--watermark-size) * 0.45));
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Inter', sans-serif;
   font-weight: 900;
-  font-size: clamp(4.5rem, 15vw, 11rem);
   letter-spacing: -0.04em;
   pointer-events: none;
   z-index: 0;
@@ -243,35 +245,29 @@ body::before {
 
 /* Dynamic device layout scaling based on window resolution detector */
 .contact-container[data-device-type="mobile"] {
-  padding-top: 100px;
+  --container-pad-top: 100px;
+  padding-top: var(--container-pad-top);
   padding-bottom: 40px;
 }
 .contact-container[data-device-type="mobile"] .contact-grid {
   grid-template-columns: 1fr;
   gap: 36px;
 }
-.contact-container[data-device-type="mobile"] .contact-watermark {
-  top: 60px;
-}
 
 .contact-container[data-device-type="tablet"] {
-  padding-top: 130px;
+  --container-pad-top: 130px;
+  padding-top: var(--container-pad-top);
   padding-bottom: 60px;
 }
 .contact-container[data-device-type="tablet"] .contact-grid {
   grid-template-columns: 1fr;
   gap: 48px;
 }
-.contact-container[data-device-type="tablet"] .contact-watermark {
-  top: 75px;
-}
 
 .contact-container[data-device-type="desktop"] {
-  padding-top: 160px;
+  --container-pad-top: 160px;
+  padding-top: var(--container-pad-top);
   padding-bottom: 80px;
-}
-.contact-container[data-device-type="desktop"] .contact-watermark {
-  top: 90px;
 }
 
 /* Left Column Info */
