@@ -34,6 +34,7 @@ export default function ContactArtCutouts() {
           transform: `translate3d(${mouse.x * -25}px, ${mouse.y * -15}px, 0) rotate(-8deg)`,
         }}
       >
+        <div className="art-cutout-bg-circle" />
         <img src={getSrc(img1)} alt="Renaissance Art Cutout 1" className="art-cutout" />
       </div>
 
@@ -44,6 +45,7 @@ export default function ContactArtCutouts() {
           transform: `translate3d(${mouse.x * 20}px, ${mouse.y * 30}px, 0) rotate(5deg)`,
         }}
       >
+        <div className="art-cutout-bg-circle" />
         <img src={getSrc(img2)} alt="Renaissance Art Cutout 2" className="art-cutout" />
       </div>
     </div>
