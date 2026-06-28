@@ -63,13 +63,13 @@ export default function SocialIconBtn({ type, href, value, label }: Props) {
         width: targetWidth,
         borderColor: 'var(--accent-glow)',
         color: 'var(--accent-glow)',
-        duration: 0.35,
-        ease: 'power2.out',
+        duration: 0.55,
+        ease: 'power3.out',
       });
       gsap.fromTo(
         text,
-        { opacity: 0, x: -8, display: 'inline-block' },
-        { opacity: 1, x: 0, duration: 0.25, delay: 0.08, ease: 'power2.out' }
+        { opacity: 0, x: -6, display: 'inline-block' },
+        { opacity: 1, x: 0, duration: 0.4, delay: 0.05, ease: 'power3.out' }
       );
     }
 
@@ -77,17 +77,17 @@ export default function SocialIconBtn({ type, href, value, label }: Props) {
       gsap.killTweensOf([btn, text]);
       gsap.to(text, {
         opacity: 0,
-        x: -8,
-        duration: 0.12,
-        ease: 'power2.in',
+        x: -6,
+        duration: 0.25,
+        ease: 'power3.out',
         onComplete: () => { if (text) text.style.display = 'none'; },
       });
       gsap.to(btn, {
         width: 46,
         borderColor: 'rgba(255, 255, 255, 0.08)',
         color: 'var(--text-color)',
-        duration: 0.35,
-        ease: 'power2.out',
+        duration: 0.5,
+        ease: 'power3.out',
       });
     }
 
