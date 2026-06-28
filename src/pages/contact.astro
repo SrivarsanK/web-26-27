@@ -7,6 +7,7 @@ import ContactWatermark from '../components/ContactWatermark.tsx';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import ContactArtCutouts from '../components/ContactArtCutouts.tsx';
+import SideRays from '../components/SideRays.tsx';
 import '../styles/contact.css';
 ---
 
@@ -49,6 +50,24 @@ import '../styles/contact.css';
 
   <main class="contact-container">
     <div class="contact-layout-wrapper">
+      <!-- Interactive WebGL SideRays Background (React Island) -->
+      <div class="side-rays-bg">
+        <SideRays
+          client:only="react"
+          speed={1.2}
+          rayColor1="#1dd1a1"
+          rayColor2="#00f2fe"
+          intensity={1.2}
+          spread={2.5}
+          origin="top-right"
+          tilt={0}
+          saturation={1.5}
+          blend={0.75}
+          falloff={1.6}
+          opacity={0.65}
+        />
+      </div>
+
       <!-- Decorative Background Watermark (Interactive React Island) -->
       <ContactWatermark client:load />
 

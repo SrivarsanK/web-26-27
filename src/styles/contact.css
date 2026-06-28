@@ -244,6 +244,16 @@ body::before {
   padding-top: calc(var(--watermark-offset) + var(--watermark-size) / 2) !important;
 }
 
+.side-rays-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .contact-grid {
   display: flex;
   flex-direction: row;
@@ -444,7 +454,20 @@ body::before {
 }
 
 .map-address-block {
-  display: none;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-top: 18px;
+  color: var(--text-muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 0 4px;
+}
+
+.map-address-block svg {
+  color: var(--accent-glow);
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 /* Custom Themed Map Pinpoint Overlay */
 .custom-theme-pinpoint {
