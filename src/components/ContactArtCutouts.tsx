@@ -1,16 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import img1 from '../public/i1.png';
 import img2 from '../public/i2.png';
 
 export default function ContactArtCutouts() {
-  const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const cutout1Ref = useRef<HTMLDivElement>(null);
+  const cutout2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Set initial static rotations using GSAP
+    if (cutout1Ref.current) gsap.set(cutout1Ref.current, { rotation: -8, x: 0, y: 0 });
+    if (cutout2Ref.current) gsap.set(cutout2Ref.current, { rotation: 5, x: 0, y: 0 });
+
     const handleMouseMove = (e: MouseEvent) => {
       // Normalize mouse coordinates from -1 to 1 based on viewport center
       const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
       const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-      setMouse({ x, y });
+
+      // Low-intensity subtle animations interpolated smoothly via GSAP
+      if (cutout1Ref.current) {
+        gsap.to(cutout1Ref.current, {
+          x: x * -10,
+          y: y * -6,
+          duration: 0.8,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      }
+
+      if (cutout2Ref.current) {
+        gsap.to(cutout2Ref.current, {
+          x: x * 8,
+          y: y * 12,
+          duration: 0.8,
+          ease: 'power2.out',
+          overwrite: 'auto',
+        });
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -28,22 +54,12 @@ export default function ContactArtCutouts() {
   return (
     <div className="contact-art-cutouts">
       {/* Cutout 1: Courbet - The Desperate Man (Bottom-Left peeking) */}
-      <div
-        className="art-cutout-wrap cutout-1"
-        style={{
-          transform: `translate3d(${mouse.x * -25}px, ${mouse.y * -15}px, 0) rotate(-8deg)`,
-        }}
-      >
+      <div ref={cutout1Ref} className="art-cutout-wrap cutout-1">
         <img src={getSrc(img1)} alt="Renaissance Art Cutout 1" className="art-cutout" />
       </div>
 
       {/* Cutout 2: Shh (Right peeking) */}
-      <div
-        className="art-cutout-wrap cutout-2"
-        style={{
-          transform: `translate3d(${mouse.x * 20}px, ${mouse.y * 30}px, 0) rotate(5deg)`,
-        }}
-      >
+      <div ref={cutout2Ref} className="art-cutout-wrap cutout-2">
         <img src={getSrc(img2)} alt="Renaissance Art Cutout 2" className="art-cutout" />
       </div>
     </div>
