@@ -46,7 +46,7 @@ body::before {
 /* Watermark */
 .contact-watermark {
   position: absolute;
-  top: 35px;
+  top: 90px;
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Inter', sans-serif;
@@ -251,6 +251,9 @@ body::before {
   grid-template-columns: 1fr;
   gap: 36px;
 }
+.contact-container[data-device-type="mobile"] .contact-watermark {
+  top: 60px;
+}
 
 .contact-container[data-device-type="tablet"] {
   padding-top: 130px;
@@ -260,10 +263,19 @@ body::before {
   grid-template-columns: 1fr;
   gap: 48px;
 }
+.contact-container[data-device-type="tablet"] .contact-watermark {
+  top: 75px;
+}
 
 .contact-container[data-device-type="desktop"] {
   padding-top: 160px;
   padding-bottom: 80px;
+}
+.contact-container[data-device-type="desktop"] .contact-watermark {
+  top: 90px;
+}
+.contact-container[data-device-type="desktop"] .left-col {
+  padding-top: 40px;
 }
 
 /* Left Column Info */
