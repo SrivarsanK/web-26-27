@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import img1 from '../public/i1.webp';
-import img2 from '../public/i2.webp';
+const img1 = '/i1.webp';
+const img2 = '/i2.webp';
 
 export default function ContactArtCutouts() {
   const cutout1Ref = useRef<HTMLDivElement>(null);
@@ -45,22 +45,16 @@ export default function ContactArtCutouts() {
     };
   }, []);
 
-  // Resolve image source dynamically supporting both string URL and ESM import object
-  const getSrc = (img: any) => {
-    if (typeof img === 'string') return img;
-    return img?.src || '';
-  };
-
   return (
     <div className="contact-art-cutouts">
       {/* Cutout 1: Courbet - The Desperate Man (Bottom-Left peeking) */}
       <div ref={cutout1Ref} className="art-cutout-wrap cutout-1">
-        <img src={getSrc(img1)} alt="Renaissance Art Cutout 1" className="art-cutout" />
+        <img src={img1} alt="Renaissance Art Cutout 1" className="art-cutout" />
       </div>
 
       {/* Cutout 2: Shh (Right peeking) */}
       <div ref={cutout2Ref} className="art-cutout-wrap cutout-2">
-        <img src={getSrc(img2)} alt="Renaissance Art Cutout 2" className="art-cutout" />
+        <img src={img2} alt="Renaissance Art Cutout 2" className="art-cutout" />
       </div>
     </div>
   );
