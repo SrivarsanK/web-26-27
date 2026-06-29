@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 
 const CARD_VIDEOS = [
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260506_030111_a9e15665-d379-4a7f-8116-695bbe452ad1.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260429_171347_f640c30d-ec21-426a-98bc-77e07c2c60cb.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260503_104800_bc43ae09-f494-43e3-97d7-2f8c1692cfd7.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_115655_b4d9cd77-feed-43cd-a198-af78ebdf1f7a.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4',
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4'
+  'https://cdn.developerstudents.club/gallery/hf_20260506_030111_a9e15665-d379-4a7f-8116-695bbe452ad1.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260429_171347_f640c30d-ec21-426a-98bc-77e07c2c60cb.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260503_104800_bc43ae09-f494-43e3-97d7-2f8c1692cfd7.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260423_161253_c72b1869-400f-45ed-ac0c-52f68c2ed5bd.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260418_115655_b4d9cd77-feed-43cd-a198-af78ebdf1f7a.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4',
+  'https://cdn.developerstudents.club/gallery/hf_20260324_024928_1efd0b0d-6c02-45a8-8847-1030900c4f63.mp4'
 ];
 
 const CARD_DETAILS = [
