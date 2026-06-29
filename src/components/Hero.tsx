@@ -263,7 +263,7 @@ export default function Hero() {
           >
             Join Us
           </a>
-          <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', marginLeft: '16px' }}>
+          <button className="md:hidden" aria-label="Open navigation menu" style={{ background: 'none', border: 'none', cursor: 'pointer', marginLeft: '16px' }}>
             <Menu style={{ width: '24px', height: '24px', color: '#fff' }} />
           </button>
         </div>
