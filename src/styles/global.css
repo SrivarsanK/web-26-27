@@ -1471,7 +1471,7 @@ body.eye-comfort-mode::after {
   pointer-events: auto;
 }
 .home-nav-logo img {
-  height: 64px;
+  height: 80px;
   width: auto;
   object-fit: contain;
 }

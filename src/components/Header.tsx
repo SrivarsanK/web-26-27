@@ -15,7 +15,7 @@ export default function Header({ active }: Props) {
       {/* Navigation */}
       <header className="home-nav-header">
         <a href="/" className="home-nav-logo">
-          <img src="/logo/club-logo.png" alt="DSC Logo" width="64" height="64" style={{ height: '64px', width: 'auto', objectFit: 'contain' }} />
+          <img src="/logo/club-logo.png" alt="DSC Logo" width="80" height="80" style={{ height: '80px', width: 'auto', objectFit: 'contain' }} />
         </a>
         <nav className="home-nav-pill hidden md:flex">
           <a href="/" className={active === 'home' ? 'active' : ''}>Home</a>
