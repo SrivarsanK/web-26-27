@@ -17,6 +17,11 @@ const { title, description } = Astro.props;
   <meta name="keywords" content="DSC, Developer Students Club, SRM IST, Ramapuram, coding, hackathon, workshops, student developers">
   <title>{title || "Developer Students Club | SRM IST Ramapuram"}</title>
   <link rel="icon" type="image/png" href="/creative-ai/image2-removebg-preview.png">
+  <!-- Async font loading: preconnect first, then non-blocking stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap"></noscript>
 </head>
 <body>
   <slot />
