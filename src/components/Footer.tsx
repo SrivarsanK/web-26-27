@@ -1,8 +1,30 @@
+import { useEffect, useRef } from 'react';
+
 interface Props {
   active?: 'home' | 'about' | 'domains' | 'gallery' | 'team' | 'contact';
 }
 
 export default function Footer({ active }: Props) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          video.src = "https://framerusercontent.com/assets/hmg5dFU33RwVgzS4V0wrSxuKJ3E.mp4";
+          video.play().catch((err) => console.log('Video autoplay prevented:', err));
+          observer.unobserve(video);
+        }
+      });
+    }, { rootMargin: '100px' });
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <footer className="contra-footer" id="contact-footer">
       <div className="contra-content">
@@ -42,7 +64,7 @@ export default function Footer({ active }: Props) {
         </div>
       </div>
 
-      <video src="https://framerusercontent.com/assets/hmg5dFU33RwVgzS4V0wrSxuKJ3E.mp4" className="contra-art" autoPlay loop muted playsInline preload="none" />
+      <video ref={videoRef} className="contra-art" loop muted playsInline preload="none" />
     </footer>
   );
 }

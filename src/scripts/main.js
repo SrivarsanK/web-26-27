@@ -187,6 +187,21 @@
     ScrollReveal.init();
     StatCounters.init();
 
+    // Defer loading footer background video using IntersectionObserver
+    const video = document.querySelector('video.contra-art');
+    if (video && video.dataset.src) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.src = video.dataset.src;
+            video.play().catch((err) => console.log('Autoplay prevented:', err));
+            observer.unobserve(video);
+          }
+        });
+      }, { rootMargin: '100px' });
+      observer.observe(video);
+    }
+
     // Eye Comfort Shield Toggle
     const eyeComfortBtn = document.getElementById('eye-comfort-toggle');
     if (eyeComfortBtn) {
