@@ -187,7 +187,7 @@ export default function Hero() {
                 fontWeight: 400,
                 fontSize: 'clamp(3rem, 8vw, 6rem)',
                 letterSpacing: '-0.05em',
-                animationDelay: '0.25s',
+                animationDelay: '0.05s',
               }}
             >
               Building the
@@ -200,7 +200,7 @@ export default function Hero() {
                 fontWeight: 400,
                 fontSize: 'clamp(3rem, 8vw, 6rem)',
                 letterSpacing: '-0.08em',
-                animationDelay: '0.42s',
+                animationDelay: '0.12s',
                 marginTop: '-4px',
               }}
             >
@@ -218,7 +218,7 @@ export default function Hero() {
             left: '40px',
             maxWidth: '260px',
             zIndex: 50,
-            animationDelay: '0.7s',
+            animationDelay: '0.22s',
           }}
         >
           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.625, fontFamily: "'Inter', sans-serif" }}>
@@ -239,7 +239,7 @@ export default function Hero() {
             alignItems: 'flex-start',
             gap: '20px',
             zIndex: 50,
-            animationDelay: '0.85s',
+            animationDelay: '0.3s',
           }}
         >
           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.8)', lineHeight: 1.625, fontFamily: "'Inter', sans-serif" }}>
