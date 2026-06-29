@@ -165,7 +165,7 @@ export default function Hero() {
       <Header active="home" />
 
       {/* ===== Hero Section ===== */}
-      <section className="relative w-full overflow-hidden h-screen" style={{ height: '100dvh', backgroundImage: "url('/creative-ai/1782459062237-ezremove.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <section className="relative w-full overflow-hidden h-screen" style={{ height: '100dvh', backgroundImage: "url('/creative-ai/1782459062237-ezremove.webp')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
         {/* Layer 1 — Base image with Ken Burns zoom */}
         <div
           className="absolute inset-0 bg-center bg-cover bg-no-repeat hero-zoom z-10"

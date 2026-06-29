@@ -489,7 +489,7 @@ button {
   min-height: 500px;
   padding-top: 0.5cm;
   padding-bottom: 2.5cm;
-  background-image: url('/creative-ai/partnership_bg.png');
+  background-image: url('/creative-ai/partnership_bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1192,7 +1192,7 @@ button {
 /* ========== CREATIVE AI SECTION ========== */
 .creative-ai-section {
   width: 100%;
-  background-image: url('/creative-ai/bg.png');
+  background-image: url('/creative-ai/bg.webp');
   background-size: cover;
   background-position: center;
   position: relative;

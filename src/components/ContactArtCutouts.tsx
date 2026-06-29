@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import img1 from '../public/i1.png';
-import img2 from '../public/i2.png';
+import img1 from '../public/i1.webp';
+import img2 from '../public/i2.webp';
 
 export default function ContactArtCutouts() {
   const cutout1Ref = useRef<HTMLDivElement>(null);
