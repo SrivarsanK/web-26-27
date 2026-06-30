@@ -354,6 +354,13 @@ export default function TeamNetworkGraph({ onSelectMember }: GraphProps) {
 
     let draggedNode: Node | null = null;
     let mouseOffset = { x: 0, y: 0 };
+    let startDragX = 0; // Fix click detection
+    let startDragY = 0;
+    
+    // Store drag history for throw velocity calculation
+    let prevMouseX = 0;
+    let prevMouseY = 0;
+
     let hoverNode: Node | null = null;
     let pulseProgress = 0;
 
@@ -433,6 +440,10 @@ export default function TeamNetworkGraph({ onSelectMember }: GraphProps) {
       if (clicked) {
         draggedNode = clicked;
         mouseOffset = { x: clicked.x - mx, y: clicked.y - my };
+        startDragX = mx;
+        startDragY = my;
+        prevMouseX = mx;
+        prevMouseY = my;
       }
     };
 
@@ -444,8 +455,13 @@ export default function TeamNetworkGraph({ onSelectMember }: GraphProps) {
       if (draggedNode) {
         draggedNode.x = mx + mouseOffset.x;
         draggedNode.y = my + mouseOffset.y;
-        draggedNode.vx = 0;
-        draggedNode.vy = 0;
+        
+        // Track velocities while dragging to throw on release
+        draggedNode.vx = mx - prevMouseX;
+        draggedNode.vy = my - prevMouseY;
+        
+        prevMouseX = mx;
+        prevMouseY = my;
       } else {
         const match = nodes.find(n => {
           if (!n.visible) return false;
@@ -467,11 +483,14 @@ export default function TeamNetworkGraph({ onSelectMember }: GraphProps) {
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX - rect.left;
         const my = e.clientY - rect.top;
-        const dx = mx - (draggedNode.x - mouseOffset.x);
-        const dy = my - (draggedNode.y - mouseOffset.y);
+        
+        // Measure real drag distance relative to down coordinates
+        const dx = mx - startDragX;
+        const dy = my - startDragY;
         const dragDist = Math.sqrt(dx * dx + dy * dy);
 
         if (dragDist < 5) {
+          // Trigger click actions ONLY if not dragged
           if (draggedNode.type === 'lead' || draggedNode.type === 'subdomain') {
             toggleNode(draggedNode);
           }
@@ -652,7 +671,6 @@ export default function TeamNetworkGraph({ onSelectMember }: GraphProps) {
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           
-          // Get abbreviation e.g. "Machine Learning" -> "ML", "Web Dev" -> "WEB"
           const words = n.label.split(' ');
           const abbr = words.length > 1 ? words.map(w => w[0]).join('') : words[0].substring(0, 3).toUpperCase();
           ctx.fillText(abbr, n.x, n.y);
