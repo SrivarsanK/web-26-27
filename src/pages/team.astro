@@ -77,12 +77,7 @@ import '../styles/contact.css';
 
       <!-- Title / Intro Header -->
       <section class="team-header-intro">
-        <h1 class="left-title text-center" style="font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 16px; overflow: hidden;">
-          {Array.from("The Minds Behind DSC").map((char) => (
-            <span class="reveal-char" style="display: inline-block; white-space: pre;">{char}</span>
-          ))}
-        </h1>
-        <p class="left-subtext text-center intro-subtext" style="max-width: 600px; margin: 0 auto 48px; font-size: 16px; opacity: 0; filter: blur(4px);">
+        <p class="left-subtext text-center intro-subtext" style="max-width: 600px; margin: 40px auto 48px; font-size: 16px; opacity: 0; filter: blur(4px);">
           Developer Students Club is built by a team of passionate developers, designers, and innovators who believe in the power of community-driven learning.
         </p>
       </section>
@@ -223,15 +218,9 @@ import '../styles/contact.css';
   import { gsap } from 'gsap';
 
   window.addEventListener('DOMContentLoaded', () => {
-    const timeline = gsap.timeline();
-    timeline.fromTo(".reveal-char",
-      { opacity: 0, y: 35, filter: 'blur(8px)' },
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.03, ease: 'power4.out' }
-    );
-    timeline.fromTo(".intro-subtext",
+    gsap.fromTo(".intro-subtext",
       { opacity: 0, y: 15, filter: 'blur(4px)' },
-      { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 0.8, ease: 'power2.out' },
-      "-=0.45"
+      { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
     );
   });
 </script>
