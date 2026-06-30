@@ -3,9 +3,8 @@ import { gsap } from 'gsap';
 
 interface Member {
   name: string;
-  role: string;
+  role: string; // This role string will be displayed in green below the name
   domain: 'presidency' | 'technical' | 'creatives' | 'operations';
-  subdomain: string;
   image: string;
   github: string;
   linkedin: string;
@@ -15,9 +14,8 @@ interface Member {
 const MEMBERS: Member[] = [
   {
     name: 'Karthik Rajan',
-    role: 'Club President',
+    role: 'President',
     domain: 'presidency',
-    subdomain: 'Presidency',
     image: '/team/karthik-rajan.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -25,9 +23,8 @@ const MEMBERS: Member[] = [
   },
   {
     name: 'Aditya Kumar',
-    role: 'Technical Domain Lead',
+    role: 'Technical Lead',
     domain: 'technical',
-    subdomain: 'Web Dev',
     image: '/team/aditya-kumar.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -35,9 +32,8 @@ const MEMBERS: Member[] = [
   },
   {
     name: 'Deepika Menon',
-    role: 'Creatives Domain Lead',
+    role: 'Creatives Lead',
     domain: 'creatives',
-    subdomain: 'Design',
     image: '/team/deepika-menon.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -45,9 +41,8 @@ const MEMBERS: Member[] = [
   },
   {
     name: 'Sneha Patel',
-    role: 'Operations Domain Lead',
+    role: 'Operations Lead',
     domain: 'operations',
-    subdomain: 'Management',
     image: '/team/sneha-patel.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -55,9 +50,8 @@ const MEMBERS: Member[] = [
   },
   {
     name: 'Rahul Anand',
-    role: 'AI / ML Lead',
+    role: 'Machine Learning Member',
     domain: 'technical',
-    subdomain: 'Machine Learning',
     image: '/team/rahul-anand.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -204,9 +198,6 @@ export default function TeamShowcase() {
                 <div className="team-member-info">
                   <h3>{president.name}</h3>
                   <p className="team-member-role">{president.role}</p>
-                  <div className="team-member-subdomains">
-                    <span className="team-subdomain-pill">{president.subdomain}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -260,9 +251,6 @@ export default function TeamShowcase() {
                 <div className="team-member-info">
                   <h3>{m.name}</h3>
                   <p className="team-member-role">{m.role}</p>
-                  <div className="team-member-subdomains">
-                    <span className="team-subdomain-pill">{m.subdomain}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -444,7 +432,7 @@ export default function TeamShowcase() {
         
         .badge-leadership { background: rgba(29, 209, 161, 0.12); border-color: rgba(29, 209, 161, 0.2); color: #1dd1a1; }
         .badge-technical { background: rgba(0, 242, 254, 0.12); border-color: rgba(0, 242, 254, 0.2); color: #00f2fe; }
-        .badge-creatives { background: rgba(29, 209, 161, 0.12); border-color: rgba(29, 209, 161, 0.2); color: #1dd1a1; }
+        .badge-creatives { background: rgba(168, 85, 247, 0.12); border-color: rgba(168, 85, 247, 0.2); color: #c084fc; } /* Soft purple */
         .badge-operations { background: rgba(234, 179, 8, 0.12); border-color: rgba(234, 179, 8, 0.2); color: #eab308; }
 
         .team-image-overlay {
@@ -511,27 +499,10 @@ export default function TeamShowcase() {
           font-family: 'Inter', sans-serif;
           font-weight: 500;
           font-size: 0.85rem;
-          color: #1dd1a1;
+          color: #1dd1a1; /* Neon mint-green */
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          margin-bottom: 12px;
-        }
-
-        .team-member-subdomains {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-        }
-
-        .team-subdomain-pill {
-          font-family: 'Inter', sans-serif;
-          font-size: 10px;
-          color: var(--text-muted);
-          background: rgba(232, 237, 233, 0.03);
-          border: 1px solid rgba(232, 237, 233, 0.06);
-          padding: 2px 8px;
-          border-radius: 4px;
-          font-weight: 400;
+          margin-bottom: 4px;
         }
       `}</style>
     </div>
