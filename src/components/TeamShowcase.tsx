@@ -4,8 +4,8 @@ import { gsap } from 'gsap';
 interface Member {
   name: string;
   role: string;
-  domain: 'leadership' | 'technical' | 'creatives' | 'operations';
-  subdomains: string[];
+  domain: 'presidency' | 'technical' | 'creatives' | 'operations';
+  subdomain: string;
   image: string;
   github: string;
   linkedin: string;
@@ -15,20 +15,10 @@ interface Member {
 const MEMBERS: Member[] = [
   {
     name: 'Karthik Rajan',
-    role: 'Main President',
-    domain: 'leadership',
-    subdomains: ['President', 'Club Oversight'],
+    role: 'Club President',
+    domain: 'presidency',
+    subdomain: 'Presidency',
     image: '/team/karthik-rajan.png',
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
-    email: 'mailto:dsc.srmrmp@gmail.com',
-  },
-  {
-    name: 'Nithya Srinivasan',
-    role: 'Vice President',
-    domain: 'leadership',
-    subdomains: ['Vice President', 'Operations Support'],
-    image: '/team/nithya-srinivasan.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -37,7 +27,7 @@ const MEMBERS: Member[] = [
     name: 'Aditya Kumar',
     role: 'Technical Domain Lead',
     domain: 'technical',
-    subdomains: ['Web Dev', 'App Dev', 'Competitive Programming', 'Cloud Computing'],
+    subdomain: 'Web Dev',
     image: '/team/aditya-kumar.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -47,7 +37,7 @@ const MEMBERS: Member[] = [
     name: 'Deepika Menon',
     role: 'Creatives Domain Lead',
     domain: 'creatives',
-    subdomains: ['Design', 'Content writing', 'Video Editing', 'Photography'],
+    subdomain: 'Design',
     image: '/team/deepika-menon.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -57,7 +47,7 @@ const MEMBERS: Member[] = [
     name: 'Sneha Patel',
     role: 'Operations Domain Lead',
     domain: 'operations',
-    subdomains: ['Management', 'Marketing', 'Public Relations'],
+    subdomain: 'Management',
     image: '/team/sneha-patel.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -67,7 +57,7 @@ const MEMBERS: Member[] = [
     name: 'Rahul Anand',
     role: 'AI / ML Lead',
     domain: 'technical',
-    subdomains: ['Machine Learning', 'Data Analytics'],
+    subdomain: 'Machine Learning',
     image: '/team/rahul-anand.png',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
@@ -113,13 +103,14 @@ const DOMAINS_DATA = [
 ];
 
 export default function TeamShowcase() {
-  const [activeTab, setActiveTab] = useState<'all' | 'leadership' | 'technical' | 'creatives' | 'operations'>('all');
+  const [activeTab, setActiveTab] = useState<'all' | 'technical' | 'creatives' | 'operations'>('all');
   const cardsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const presidentCardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Parallax card tilt on mouse move
-    const cards = cardsRefs.current;
+    const cards = [...cardsRefs.current, presidentCardRef.current];
     
     cards.forEach((card) => {
       if (!card) return;
@@ -169,23 +160,35 @@ export default function TeamShowcase() {
   useEffect(() => {
     // Fade elements in on tab filter switch
     if (containerRef.current) {
+      const targets = [
+        ...(containerRef.current.querySelectorAll('.team-card-wrapper') as any)
+      ];
+      if (presidentCardRef.current) {
+        targets.unshift(presidentCardRef.current);
+      }
       gsap.fromTo(
-        containerRef.current.querySelectorAll('.team-card-wrapper'),
+        targets,
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' }
       );
     }
   }, [activeTab]);
 
-  const filteredMembers = activeTab === 'all' 
-    ? MEMBERS 
+  const president = MEMBERS.find(m => m.domain === 'presidency')!;
+  
+  // Filter other members (excluding president from the category list display)
+  const filteredNonPresidents = activeTab === 'all'
+    ? MEMBERS.filter(m => m.domain !== 'presidency')
     : MEMBERS.filter(m => m.domain === activeTab);
+
+  // Determine if president should be shown
+  const showPresident = activeTab === 'all';
 
   return (
     <div className="team-component-wrapper">
       {/* Category Navigation Tabs */}
       <div className="team-filter-tabs">
-        {(['all', 'leadership', 'technical', 'creatives', 'operations'] as const).map(tab => (
+        {(['all', 'technical', 'creatives', 'operations'] as const).map(tab => (
           <button
             key={tab}
             className={`team-tab-btn ${activeTab === tab ? 'active' : ''}`}
@@ -196,62 +199,112 @@ export default function TeamShowcase() {
         ))}
       </div>
 
-      {/* Grid of Team Cards */}
-      <div ref={containerRef} className="team-showcase-grid">
-        {filteredMembers.map((m, idx) => (
-          <div
-            key={m.name}
-            ref={(el) => { cardsRefs.current[idx] = el; }}
-            className="team-card-wrapper"
-          >
-            {/* Card Body */}
-            <div className="team-member-card">
-              {/* Image Container */}
-              <div className="team-image-container">
-                <img src={m.image} alt={m.name} className="team-member-image" />
-                <div className="team-image-overlay" />
-                
-                {/* Domain Tag */}
-                <div className={`team-card-domain-badge badge-${m.domain}`}>
-                  {m.domain}
+      <div ref={containerRef} className="team-showcase-container">
+        {/* Centered President Card (only on 'all') */}
+        {showPresident && (
+          <div className="president-row">
+            <div
+              ref={presidentCardRef}
+              className="team-card-wrapper president-card-wrapper"
+            >
+              <div className="team-member-card president-member-card">
+                <div className="team-image-container">
+                  <img src={president.image} alt={president.name} className="team-member-image" />
+                  <div className="team-image-overlay" />
+                  
+                  <div className="team-card-domain-badge badge-leadership">
+                    PRESIDENT
+                  </div>
+
+                  <div className="team-social-overlay-row">
+                    <a href={president.github} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="GitHub">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                    </a>
+                    <a href={president.linkedin} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                    </a>
+                    <a href={president.email} className="team-social-circle-btn" aria-label="Email">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
 
-                {/* Overlay Social Icons Row */}
-                <div className="team-social-overlay-row">
-                  <a href={m.github} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                    </svg>
-                  </a>
-                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect x="2" y="9" width="4" height="12" />
-                      <circle cx="4" cy="4" r="2" />
-                    </svg>
-                  </a>
-                  <a href={m.email} className="team-social-circle-btn" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                      <polyline points="22,6 12,13 2,6" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* Info Section */}
-              <div className="team-member-info">
-                <h3>{m.name}</h3>
-                <p className="team-member-role">{m.role}</p>
-                <div className="team-member-subdomains">
-                  {m.subdomains.map(sub => (
-                    <span key={sub} className="team-subdomain-pill">{sub}</span>
-                  ))}
+                <div className="team-member-info">
+                  <h3>{president.name}</h3>
+                  <p className="team-member-role">{president.role}</p>
+                  <div className="team-member-subdomains">
+                    <span className="team-subdomain-pill">{president.subdomain}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        ))}
+        )}
+
+        {/* Grid of Other Team Members */}
+        <div className="team-showcase-grid">
+          {filteredNonPresidents.map((m, idx) => (
+            <div
+              key={m.name}
+              ref={(el) => { cardsRefs.current[idx] = el; }}
+              className="team-card-wrapper"
+            >
+              {/* Card Body */}
+              <div className="team-member-card">
+                {/* Image Container */}
+                <div className="team-image-container">
+                  <img src={m.image} alt={m.name} className="team-member-image" />
+                  <div className="team-image-overlay" />
+                  
+                  {/* Domain Tag */}
+                  <div className={`team-card-domain-badge badge-${m.domain}`}>
+                    {m.domain}
+                  </div>
+
+                  {/* Overlay Social Icons Row */}
+                  <div className="team-social-overlay-row">
+                    <a href={m.github} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="GitHub">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                      </svg>
+                    </a>
+                    <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="team-social-circle-btn" aria-label="LinkedIn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                      </svg>
+                    </a>
+                    <a href={m.email} className="team-social-circle-btn" aria-label="Email">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Info Section */}
+                <div className="team-member-info">
+                  <h3>{m.name}</h3>
+                  <p className="team-member-role">{m.role}</p>
+                  <div className="team-member-subdomains">
+                    <span className="team-subdomain-pill">{m.subdomain}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Domain and Subdomain Visualizer Grid */}
@@ -332,6 +385,34 @@ export default function TeamShowcase() {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
+        /* Team Showcase Layouts */
+        .team-showcase-container {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 120px;
+        }
+
+        .president-row {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 48px;
+        }
+
+        .president-card-wrapper {
+          width: 32%;
+          min-width: 280px;
+          max-width: 360px;
+        }
+
+        @media (max-width: 640px) {
+          .president-card-wrapper {
+            width: 100%;
+          }
+        }
+
         /* Team Showcase Grid */
         .team-showcase-grid {
           display: grid;
@@ -339,7 +420,6 @@ export default function TeamShowcase() {
           gap: 40px;
           width: 100%;
           perspective: 1000px;
-          margin-bottom: 120px;
         }
 
         @media (max-width: 1024px) {
@@ -434,7 +514,7 @@ export default function TeamShowcase() {
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .badge-leadership { background: rgba(232, 237, 233, 0.12); color: #e8ede9; }
+        .badge-leadership { background: rgba(29, 209, 161, 0.12); border-color: rgba(29, 209, 161, 0.2); color: #1dd1a1; }
         .badge-technical { background: rgba(0, 242, 254, 0.12); border-color: rgba(0, 242, 254, 0.2); color: #00f2fe; }
         .badge-creatives { background: rgba(29, 209, 161, 0.12); border-color: rgba(29, 209, 161, 0.2); color: #1dd1a1; }
         .badge-operations { background: rgba(234, 179, 8, 0.12); border-color: rgba(234, 179, 8, 0.2); color: #eab308; }
