@@ -19,6 +19,7 @@ Your goal is to build, extend, and refine the website, making it highly interact
 
 ### 1. Website Concept & Usage
 - **Client**: Developer Students Club (DSC) SRM IST Ramapuram.
+- **Official Address**: SRM IST Ramapuram, Chennai, TN, India (Do not use full postal coordinates or postal codes).
 - **Purpose**: The official digital hub for student developers to learn about the club, its specialized domains, events, workshops, projects, blogs, open-source tools, and member benefits.
 - **Core Pages**:
   - Home Page (`src/pages/index.astro`): Main introduction, hero section, and domains highlight.
@@ -60,7 +61,16 @@ To ensure visual consistency, you must follow the theme set by the Contact page:
 
 ---
 
-### 4. Git Version Control & Atomic Commit Discipline
+### 4. Image Delivery & Performance Rules (Lighthouse Audits)
+To maintain a high-performance Lighthouse score (90+), developers must strictly adhere to the following optimization practices:
+- **WebP Assets Only**: All image assets (backgrounds, illustrations, team profile photos) must be compressed in the next-generation **WebP** format. Raw PNG/JPG assets are not allowed in production.
+- **Image Resizing (Payload Budgets)**: Image assets must be downscaled to match their actual rendered sizes on high-DPI displays (e.g., maximum dimensions of `300px` to `400px` for profile photos). Never load high-resolution source images directly.
+- **Explicit Image Dimensions**: Every single `<img>` element must specify explicit `width` and `height` attributes to prevent Cumulative Layout Shift (CLS) and ensure a 100/100 score in Lighthouse page layout audits.
+- **Entity Warning**: Avoid using inline `style` attributes containing single quotes (`style={{ fontFamily: "'Playfair Display', ..." }}`) within React components. React SSR encodes single quotes into HTML entities (`&#x27;`), which breaks CSS/HTML syntax validators in IDEs. Instead, define font styles inside `.css` files or use CSS classes.
+
+---
+
+### 5. Git Version Control & Atomic Commit Discipline
 You must follow strict atomic commit discipline for all code changes. One commit must represent exactly one logical change, be independently deployable, and leave the codebase in a working state.
 
 #### Core Principles:
@@ -99,6 +109,34 @@ Proposed commit sequence:
 - **Push Target Restriction**: Always push commits only to the `fork` remote repository (`git push fork <branch>`). Never push directly to `origin` or any other upstream remote.
 - **Rewrite on correction**: If a file needs to be modified to fix an issue in a previously proposed commit within the same session, update the proposed diff for that specific commit (i.e. simulate an `amend`).
 ```
+
+---
+
+## ⚡ Lighthouse Performance Auditing & Verification
+
+Before merging any feature or layout redesign, developers must verify performance metrics by running a production Lighthouse audit:
+
+### 1. Build and Run Preview
+```powershell
+# 1. Compile the production static build
+npm run build
+
+# 2. Spin up the preview server locally
+npm run preview
+```
+
+### 2. Execute Lighthouse CLI
+Run the headless Lighthouse auditor against the target page (replace target port and route as needed):
+```powershell
+npx lighthouse http://localhost:4321/team --view --chrome-flags="--headless" --output-path=lighthouse_team_report.html
+```
+
+### 3. Performance Criteria (Minimum Target Scores)
+* **Performance**: `90+` (Exceptions allowed for intensive WebGL background rendering)
+* **Accessibility**: `100`
+* **Best Practices**: `100`
+* **SEO**: `100`
+
 ---
 
 ## 📁 Codebase Directory Map
