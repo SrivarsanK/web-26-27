@@ -72,8 +72,6 @@ body {
   z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-family: 'Inter', sans-serif;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 .dsc-marquee-content {
   display: flex;
