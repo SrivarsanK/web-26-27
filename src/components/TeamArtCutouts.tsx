@@ -63,17 +63,17 @@ export default function TeamArtCutouts() {
     <div className="contact-art-cutouts">
       {/* Cutout 1 (Bottom-Left peeking) */}
       <div ref={cutout1Ref} className="art-cutout-wrap cutout-1">
-        <img src={img1} alt="Renaissance Art Cutout 1" className="art-cutout" width={1200} height={1565} />
+        <img src={img1} alt="Renaissance Art Cutout 1" className="art-cutout" width={345} height={450} />
       </div>
 
       {/* Cutout 2 (Right peeking) */}
       <div ref={cutout2Ref} className="art-cutout-wrap cutout-2">
-        <img src={img2} alt="Renaissance Art Cutout 2" className="art-cutout" width={1200} height={1579} />
+        <img src={img2} alt="Renaissance Art Cutout 2" className="art-cutout" width={342} height={450} />
       </div>
 
       {/* Cutout 3 (Left middle peeking) */}
       <div ref={cutout3Ref} className="art-cutout-wrap cutout-3">
-        <img src={img3} alt="Renaissance Art Cutout 3" className="art-cutout" width={1021} height={805} />
+        <img src={img3} alt="Renaissance Art Cutout 3" className="art-cutout" width={450} height={355} />
       </div>
     </div>
   );
