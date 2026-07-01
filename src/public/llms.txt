@@ -1,0 +1,24 @@
+# Developer Students Club — DSC SRM IST Ramapuram
+
+> DSC (Developer Students Club) SRM IST Ramapuram is a student-driven technical club affiliated with Google Developers on Campus at SRM Institute of Science and Technology, Ramapuram campus, Chennai.
+
+## About
+
+DSC SRM IST Ramapuram empowers student developers through hands-on workshops, collaborative projects, hackathons, and networking events. We bridge the gap between academic learning and industry-ready skills.
+
+## Pages
+
+- [Home](/): Club overview, mission, and upcoming events
+- [About](/about): Club history, vision, and domain areas
+- [Team](/team): Core team members and their roles
+- [Gallery](/gallery): Event photos and highlights
+- [Contact](/contact): Location and contact information
+
+## Contact
+
+- Address: SRM IST Ramapuram, Chennai, TN, India
+- Social: @dscsrmrmp on X (Twitter), Instagram, LinkedIn
+
+## Technology
+
+Built with Astro, React, TypeScript, and deployed as a static site.
