@@ -8,7 +8,7 @@
   --accent-glow: #1dd1a1;
   --card-bg: rgba(17, 23, 20, 0.3);
   --input-bg: rgba(14, 19, 16, 0.45);
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Inter', 'Inter Fallback', sans-serif;
   --container-pad-top: 160px;
 }
 
