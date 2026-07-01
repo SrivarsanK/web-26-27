@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
-import TeamNetworkGraph from './TeamNetworkGraph';
+
+const TeamNetworkGraph = lazy(() => import('./TeamNetworkGraph'));
 
 interface Member {
   name: string;
@@ -302,7 +303,9 @@ export default function TeamShowcase() {
       ) : (
         /* Render Interactive Network Canvas Graph view */
         <div className="graph-view-wrapper">
-          <TeamNetworkGraph onSelectMember={handleSelectMember} />
+          <Suspense fallback={<div className="graph-loading-placeholder" style={{ padding: '40px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', textAlign: 'center' }}>Loading network physics graph...</div>}>
+            <TeamNetworkGraph onSelectMember={handleSelectMember} />
+          </Suspense>
 
           {/* Highlight card detail panel when clicking graph node */}
           {selectedGraphMember ? (

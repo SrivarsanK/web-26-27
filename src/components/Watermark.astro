@@ -1,0 +1,89 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+<div class="contact-watermark-wrapper" id="watermark-wrapper">
+  <!-- Glow Layer (Blurred backdrop) -->
+  <div class="contact-watermark-glow">{text}</div>
+
+  <!-- Foreground Text Layer -->
+  <div class="contact-watermark">{text}</div>
+</div>
+
+<style>
+  .contact-watermark-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    will-change: transform;
+    position: absolute;
+    top: var(--watermark-offset);
+    left: 0;
+    width: 100%;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    transition: transform 0.25s cubic-bezier(0.1, 0.8, 0.2, 1);
+  }
+
+  .contact-watermark-wrapper .contact-watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .contact-watermark-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    font-size: var(--watermark-size);
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    color: #1dd1a1;
+    z-index: -1;
+    mix-blend-mode: screen;
+    animation: watermarkDreamyGlow 8s ease-in-out infinite;
+  }
+
+  @keyframes watermarkDreamyGlow {
+    0% {
+      opacity: 0.22;
+      filter: blur(20px);
+    }
+    50% {
+      opacity: 0.45;
+      filter: blur(48px);
+    }
+    100% {
+      opacity: 0.22;
+      filter: blur(20px);
+    }
+  }
+</style>
+
+<script>
+  const wrapper = document.getElementById('watermark-wrapper');
+  if (wrapper) {
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      const y = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      
+      const shiftX = x * 8;
+      const shiftY = y * 4;
+      const rotateY = x * 3;
+      const rotateX = -y * 3;
+      
+      wrapper.style.transform = `translate3d(${shiftX}px, ${shiftY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+  }
+</script>
