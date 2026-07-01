@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export default function ContactWatermark() {
+interface Props {
+  text: string;
+}
+
+export default function Watermark({ text }: Props) {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -44,12 +48,12 @@ export default function ContactWatermark() {
       >
         {/* Glow Layer (Blurred backdrop) */}
         <div className="contact-watermark-glow">
-          Contact
+          {text}
         </div>
 
         {/* Foreground Text Layer */}
         <div className="contact-watermark">
-          Contact
+          {text}
         </div>
       </div>
 

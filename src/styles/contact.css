@@ -125,6 +125,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  pointer-events: none; /* Let empty area pointer events pass to background cutouts */
 }
 
 .contact-layout-wrapper {
@@ -134,6 +135,20 @@ body {
   width: 100%;
   box-sizing: border-box;
   padding-top: calc(var(--watermark-offset) + var(--watermark-size) / 2) !important;
+  pointer-events: none; /* Let empty area pointer events pass to background cutouts */
+}
+
+/* Enable pointer events on interactive blocks */
+.contact-grid,
+.left-col,
+.right-col,
+.team-header-intro,
+.team-showcase-section,
+.team-bottom-cta,
+.home-nav-header,
+.mobile-menu-drawer,
+.contra-footer {
+  pointer-events: auto;
 }
 
 .side-rays-bg {

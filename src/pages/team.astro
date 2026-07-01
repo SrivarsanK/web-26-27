@@ -1,152 +1,226 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header';
-import '../styles/team.css';
+import Header from '../components/Header.tsx';
+import Footer from '../components/Footer.tsx';
+import SideRays from '../components/SideRays.tsx';
+import Watermark from '../components/Watermark.tsx';
+import TeamArtCutouts from '../components/TeamArtCutouts.tsx';
+import TeamShowcase from '../components/TeamShowcase.tsx';
+import TechParticles from '../components/TechParticles.tsx';
+import '../styles/contact.css';
 ---
 
-<BaseLayout title="Team | The People Behind the Work">
+<BaseLayout title="Team — Developer Students Club | SRM IST Ramapuram" description="Meet the passionate core team of student leaders, developers, designers, and organizers behind the Developer Students Club (DSC) at SRM IST Ramapuram.">
+
+  <!-- Interactive WebGL SideRays Background (React Island) -->
+  <div class="side-rays-bg">
+    <SideRays
+      client:only="react"
+      speed={1.2}
+      rayColor1="#1dd1a1"
+      rayColor2="#00f2fe"
+      intensity={1.2}
+      spread={2.5}
+      origin="top-right"
+      tilt={0}
+      saturation={1.5}
+      blend={0.75}
+      falloff={1.6}
+      opacity={0.65}
+    />
+  </div>
+
+  <!-- Interactive Background Canvas Particles (React Island) -->
+  <TechParticles client:load />
+
+  <!-- Decorative Corner Circuit Board Graphics -->
+  <svg class="corner-graphic corner-top-left" width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 L100,50 L150,100 L220,100" stroke="rgba(232, 237, 233, 0.4)" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M60,0 L60,80 L100,120 L150,120" stroke="rgba(232, 237, 233, 0.25)" stroke-width="1" stroke-linecap="round" />
+    <circle cx="220" cy="100" r="3" fill="#1dd1a1" />
+    <circle cx="150" cy="120" r="2" fill="rgba(232, 237, 233, 0.6)" />
+  </svg>
+
+  <svg class="corner-graphic corner-top-right" width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M250,50 L150,50 L100,100 L30,100" stroke="rgba(232, 237, 233, 0.4)" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M190,0 L190,80 L150,120 L100,120" stroke="rgba(232, 237, 233, 0.25)" stroke-width="1" stroke-linecap="round" />
+    <circle cx="30" cy="100" r="3" fill="#1dd1a1" />
+    <circle cx="100" cy="120" r="2" fill="rgba(232, 237, 233, 0.6)" />
+  </svg>
+
+  <!-- Marquee Ticker -->
   <div class="dsc-marquee-container">
     <div class="dsc-marquee-content">
-      <div style="display: flex; align-items: center;">
-        <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
-      </div>
-      <div style="display: flex; align-items: center;">
-        <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
-      </div>
-      <div style="display: flex; align-items: center;">
-        <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
-      </div>
-      <div style="display: flex; align-items: center;">
-        <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
-        <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
-      </div>
+      <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
+      
+      <div class="dsc-marquee-item">UPCOMING HACKATHON: CODEFEST 2026</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">NEW WORKSHOPS EVERY WEEK</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">JOIN THE OPEN SOURCE REVOLUTION</div><div class="dsc-marquee-star">★</div>
+      <div class="dsc-marquee-item">EMPOWERING STUDENT DEVELOPERS</div><div class="dsc-marquee-star">★</div>
     </div>
   </div>
 
+  <!-- Navigation (React Island) -->
   <Header client:load active="team" />
 
-  <div class="grid-overlay">
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-    <div class="grid-line"></div>
-  </div>
-
-  <main class="team-container">
-    
-    <!-- Header Section -->
-    <div class="header-section">
-      <h1>THE STUDENT LEADERS<br>OF DSC.</h1>
-      <p class="desc">
-        Developer Students Club is built by a team of passionate developers, designers, and innovators who believe in the power of community-driven learning.
-      </p>
-      <p class="desc">
-        We bring together expertise across web development, machine learning, cloud computing, and UI/UX design — unified by a shared commitment to building impactful solutions.
-      </p>
-    </div>
-
-    <!-- Team Grid -->
-    <div class="team-members">
+  <main class="contact-container" style="max-width: 1100px;">
+    <div class="contact-layout-wrapper" style="--watermark-size: clamp(6.5rem, 22vw, 16rem);">
       
-      <!-- Row 1 -->
-      <div class="member-card" style="grid-column: 1; grid-row: 1;">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="David Aghaei">
-        <div class="member-info">
-          <h2>DAVID AGHAEI</h2>
-          <p>PRESIDENT</p>
+      <!-- Reusable 3D Parallax Watermark component -->
+      <Watermark client:load text="TEAM" />
+
+      <!-- Interactive Background Art Cutouts (React Island) -->
+      <TeamArtCutouts client:load />
+
+      <!-- Title / Intro Header -->
+      <section class="team-header-intro">
+        <p class="left-subtext text-center intro-subtext" style="max-width: 600px; margin: 40px auto 48px; font-size: 16px; opacity: 0; filter: blur(4px);">
+          Developer Students Club is built by a team of passionate developers, designers, and innovators who believe in the power of community-driven learning.
+        </p>
+      </section>
+
+      <!-- Team Showcase Cards Grid (React Island) -->
+      <section class="team-showcase-section" style="position: relative; z-index: 10;">
+        <TeamShowcase client:load />
+      </section>
+
+      <!-- Bottom Interactive Call to Action Block -->
+      <section class="team-bottom-cta">
+        <div class="team-cta-box">
+          <div class="team-cta-text">
+            <h2>Ready to build with us?</h2>
+            <p>We're building a vibrant tech community and looking for students who share our passion. Bring your curiosity, your drive, and your commitment to learning and growing together.</p>
+          </div>
+          <div class="team-cta-action">
+            <a href="/contact" class="team-cta-btn">
+              <span>Get in Touch</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="member-card" style="grid-column: 2; grid-row: 1;">
-        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Daniel Dayan">
-        <div class="member-info">
-          <h2>DANIEL DAYAN</h2>
-          <p>VICE PRESIDENT</p>
-        </div>
-      </div>
-
-      <div class="member-card" style="grid-column: 3; grid-row: 1; margin-top: 240px;">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Christopher Kovel">
-        <div class="member-info">
-          <h2>CHRISTOPHER KOVEL</h2>
-          <p>TECHNICAL LEAD</p>
-        </div>
-      </div>
-
-      <div class="member-card" style="grid-column: 4; grid-row: 1; margin-top: 240px;">
-        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Joseph Doyle">
-        <div class="member-info">
-          <h2>JOSEPH DOYLE</h2>
-          <p>EVENTS LEAD</p>
-        </div>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="member-card" style="grid-column: 1; grid-row: 2;">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Steven Lopez">
-        <div class="member-info">
-          <h2>STEVEN LOPEZ</h2>
-          <p>DESIGN LEAD</p>
-        </div>
-      </div>
-
-      <div class="member-card" style="grid-column: 2; grid-row: 2;">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Jenna Hornstock">
-        <div class="member-info">
-          <h2>JENNA HORNSTOCK</h2>
-          <p>PR & OUTREACH LEAD</p>
-        </div>
-      </div>
-
-      <div class="member-card" style="grid-column: 4; grid-row: 2;">
-        <img src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Justin Lee">
-        <div class="member-info">
-          <h2>JUSTIN LEE</h2>
-          <p>WEB DEVELOPMENT LEAD</p>
-        </div>
-      </div>
-
-      <!-- Row 3 -->
-      <div class="member-card" style="grid-column: 2; grid-row: 3;">
-        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Briana Land">
-        <div class="member-info">
-          <h2>BRIANA LAND</h2>
-          <p>COMMUNITY MANAGER</p>
-        </div>
-      </div>
-
-      <div class="member-card" style="grid-column: 3; grid-row: 3;">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Marrisa Yurcek">
-        <div class="member-info">
-          <h2>MARRISA YURCEK</h2>
-          <p>OPERATIONS LEAD</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Bottom Section -->
-    <div class="bottom-section">
-      <div class="cta-box">
-        <h2>READY TO BUILD<br>WITH US?</h2>
-        <p>We're building a vibrant tech community and looking for students<br>who share our passion. Bring your curiosity, your drive, and your<br>commitment to learning and growing together.</p>
-        <a href="#" class="apply-link">APPLY TO JOIN &rarr;</a>
-      </div>
-      <div class="team-photo-box">
-        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Group Photo">
-      </div>
     </div>
   </main>
+
+  <!-- Footer (React Island) -->
+  <Footer client:load active="team" />
+
 </BaseLayout>
+
+<style>
+  .text-center {
+    text-align: center;
+  }
+
+  .team-header-intro {
+    position: relative;
+    z-index: 10;
+  }
+
+  .team-bottom-cta {
+    position: relative;
+    z-index: 10;
+    margin-top: 80px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .team-cta-box {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E"),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+    background-color: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .team-cta-box:hover {
+    border-color: rgba(29, 209, 161, 0.25);
+    box-shadow: 0 12px 40px rgba(29, 209, 161, 0.06);
+  }
+
+  .team-cta-text h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .team-cta-text p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0;
+  }
+
+  .team-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: #080d0b;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.25s, transform 0.25s;
+    white-space: nowrap;
+  }
+
+  .team-cta-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    color: #080d0b;
+  }
+
+  .team-cta-btn:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .team-cta-box {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 30px;
+    }
+    
+    .team-cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    gsap.fromTo(".intro-subtext",
+      { opacity: 0, y: 15, filter: 'blur(4px)' },
+      { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
+    );
+  });
+</script>
