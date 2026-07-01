@@ -21,6 +21,7 @@ export default function MapCard() {
       {/* Dark-themed iframe */}
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.053672855942!2d80.17816267507753!3d13.032254087288711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5266d11f9ca625%3A0xf77d1733be7b5b74!2sSRM%20Institute%20Of%20Science%20And%20Technology!5e0!3m2!1sen!2sin!4v1782686145388!5m2!1sen!2sin"
+        title="SRM IST Ramapuram Campus Location Map"
         width="100%"
         height="100%"
         style={{
