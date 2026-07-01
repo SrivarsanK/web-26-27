@@ -16,7 +16,7 @@ import '../styles/contact.css';
   <!-- Interactive WebGL SideRays Background (React Island) -->
   <div class="side-rays-bg">
     <SideRays
-      client:only="react"
+      client:idle
       speed={1.2}
       rayColor1="#1dd1a1"
       rayColor2="#00f2fe"
@@ -88,7 +88,7 @@ import '../styles/contact.css';
           </div>
 
           <!-- Integrated Dark Map Card (React Island) -->
-          <MapCard client:visible />
+          <MapCard client:idle />
 
           <!-- Address Block below the MapCard -->
           <div class="map-address-block">
@@ -102,7 +102,7 @@ import '../styles/contact.css';
 
         <!-- Right Column: Card with Contact Form (React Island) -->
         <section class="right-col">
-          <ContactFormCard client:load />
+          <ContactFormCard client:idle />
         </section>
       </div>
     </div>
@@ -112,12 +112,14 @@ import '../styles/contact.css';
   <Footer client:visible={{ rootMargin: '100px' }} active="contact" />
 
   <script>
-    // Social icon GSAP hover — now handled by SocialIconBtn.tsx island
-
-    // Map pin hover + zoom — now handled by MapCard.tsx island
-
-    // Form submit + toast — now handled by ContactFormCard.tsx island
-
-    // Mobile menu drawer toggle — now handled by Header.tsx island
+    // Reveal marquee after first paint to avoid Speed Index / CLS penalty
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const marquee = document.querySelector('.dsc-marquee-container');
+          if (marquee) (marquee as HTMLElement).style.opacity = '1';
+        }, 500);
+      });
+    });
   </script>
 </BaseLayout>

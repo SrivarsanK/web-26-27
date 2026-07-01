@@ -23,6 +23,14 @@
   descent-override: 20%;
   line-gap-override: 0%;
 }
+@font-face {
+  font-family: 'Roboto Fallback';
+  src: local('Arial');
+  size-adjust: 101%;
+  ascent-override: 92%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
 
 * { font-family: 'Inter', 'Inter Fallback', sans-serif; }
 .font-playfair { font-family: 'Playfair Display', 'Playfair Fallback', serif; }

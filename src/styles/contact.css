@@ -33,7 +33,7 @@ body {
   top: var(--watermark-offset);
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
   font-weight: 400;
   font-size: var(--watermark-size);
   line-height: 1;
@@ -47,6 +47,7 @@ body {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  contain: layout;
 }
 
 /* Marquee Styles */
@@ -71,11 +72,16 @@ body {
   z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-family: 'Inter', sans-serif;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .dsc-marquee-content {
   display: flex;
   width: fit-content;
   animation: dsc-marquee 25s linear infinite;
+  animation-delay: 2s;
+  will-change: transform;
+  transform: translateX(0);
 }
 .dsc-marquee-item {
   display: flex;
@@ -89,6 +95,7 @@ body {
   color: #14a3a3;
   margin: 0 32px;
   font-size: 14px;
+  contain: layout style;
 }
 
 
