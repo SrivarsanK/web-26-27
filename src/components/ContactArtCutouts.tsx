@@ -49,12 +49,12 @@ export default function ContactArtCutouts() {
     <div className="contact-art-cutouts">
       {/* Cutout 1: Courbet - The Desperate Man (Bottom-Left peeking) */}
       <div ref={cutout1Ref} className="art-cutout-wrap cutout-1">
-        <img src={img1} alt="Renaissance Art Cutout 1" className="art-cutout" />
+        <img src={img1} alt="Renaissance Art Cutout 1" className="art-cutout" width={1200} height={1565} />
       </div>
 
       {/* Cutout 2: Shh (Right peeking) */}
       <div ref={cutout2Ref} className="art-cutout-wrap cutout-2">
-        <img src={img2} alt="Renaissance Art Cutout 2" className="art-cutout" />
+        <img src={img2} alt="Renaissance Art Cutout 2" className="art-cutout" width={1200} height={1579} />
       </div>
     </div>
   );
