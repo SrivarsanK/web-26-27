@@ -1315,6 +1315,13 @@ button {
   gap: 10px;
 }
 
+.contra-footer-logo {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-size: 2.5rem !important;
+  letter-spacing: normal !important;
+}
+
 .contra-logo .serif {
   font-family: 'Playfair Display', 'Times New Roman', serif;
   font-weight: 700;

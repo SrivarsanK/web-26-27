@@ -28,7 +28,7 @@ export default function Footer({ active }: Props) {
   return (
     <footer className="contra-footer" id="contact-footer">
       <div className="contra-content">
-        <h2 className="contra-logo" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 500, fontSize: '2.5rem', letterSpacing: 'normal' }}>
+        <h2 className="contra-logo contra-footer-logo">
           Developer Students Club
         </h2>
         <p className="contra-subtitle">SRM IST, Ramapuram</p>
