@@ -70,6 +70,20 @@ const { text } = Astro.props;
       filter: blur(20px);
     }
   }
+  /* Size-adjusted fallback eliminates CLS from Bebas Neue font swap */
+  @font-face {
+    font-family: 'Bebas Neue Fallback';
+    src: local('Arial Narrow'), local('Arial');
+    size-adjust: 78%;
+    ascent-override: 88%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
+
+  .contact-watermark-glow,
+  .contact-watermark {
+    font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
+  }
 </style>
 
 <script>
