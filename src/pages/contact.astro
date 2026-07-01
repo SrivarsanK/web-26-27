@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SocialIconBtn from '../components/SocialIconBtn.tsx';
 import MapCard from '../components/MapCard.tsx';
 import ContactFormCard from '../components/ContactFormCard.tsx';
-import ContactWatermark from '../components/ContactWatermark.tsx';
+import Watermark from '../components/Watermark.astro';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import ContactArtCutouts from '../components/ContactArtCutouts.tsx';
@@ -16,7 +16,7 @@ import '../styles/contact.css';
   <!-- Interactive WebGL SideRays Background (React Island) -->
   <div class="side-rays-bg">
     <SideRays
-      client:only="react"
+      client:idle
       speed={1.2}
       rayColor1="#1dd1a1"
       rayColor2="#00f2fe"
@@ -69,10 +69,10 @@ import '../styles/contact.css';
   <main class="contact-container">
     <div class="contact-layout-wrapper">
       <!-- Decorative Background Watermark (Interactive React Island) -->
-      <ContactWatermark client:load />
+      <Watermark text="Contact" />
 
       <!-- Interactive Background Art Cutouts (React Island) -->
-      <ContactArtCutouts client:load />
+      <ContactArtCutouts client:idle />
 
       <div class="contact-grid">
         <section class="left-col">
@@ -81,14 +81,14 @@ import '../styles/contact.css';
 
           <!-- Social Icons Row for Redirects (React Islands) -->
           <div class="contact-socials-row">
-            <SocialIconBtn client:load type="email" href="mailto:dsc.srmrmp@gmail.com" value="dsc.srmrmp@gmail.com" label="Email DSC" />
-            <SocialIconBtn client:load type="instagram" href="https://instagram.com/dscsrmrmp" value="@dscsrmrmp" label="Instagram" />
-            <SocialIconBtn client:load type="linkedin" href="https://linkedin.com/company/dscsrmrmp" value="DSC SRM Ramapuram" label="LinkedIn" />
-            <SocialIconBtn client:load type="twitter" href="https://x.com/dscsrmrmp" value="@dscsrmrmp" label="X (Twitter)" />
+            <SocialIconBtn client:visible type="email" href="mailto:dsc.srmrmp@gmail.com" value="dsc.srmrmp@gmail.com" label="Email DSC" />
+            <SocialIconBtn client:visible type="instagram" href="https://instagram.com/dscsrmrmp" value="@dscsrmrmp" label="Instagram" />
+            <SocialIconBtn client:visible type="linkedin" href="https://linkedin.com/company/dscsrmrmp" value="DSC SRM Ramapuram" label="LinkedIn" />
+            <SocialIconBtn client:visible type="twitter" href="https://x.com/dscsrmrmp" value="@dscsrmrmp" label="X (Twitter)" />
           </div>
 
           <!-- Integrated Dark Map Card (React Island) -->
-          <MapCard client:load />
+          <MapCard client:idle />
 
           <!-- Address Block below the MapCard -->
           <div class="map-address-block">
@@ -102,22 +102,12 @@ import '../styles/contact.css';
 
         <!-- Right Column: Card with Contact Form (React Island) -->
         <section class="right-col">
-          <ContactFormCard client:load />
+          <ContactFormCard client:idle />
         </section>
       </div>
     </div>
   </main>
 
   <!-- Footer (React Island) -->
-  <Footer client:load active="contact" />
-
-  <script>
-    // Social icon GSAP hover — now handled by SocialIconBtn.tsx island
-
-    // Map pin hover + zoom — now handled by MapCard.tsx island
-
-    // Form submit + toast — now handled by ContactFormCard.tsx island
-
-    // Mobile menu drawer toggle — now handled by Header.tsx island
-  </script>
+  <Footer client:visible={{ rootMargin: '100px' }} active="contact" />
 </BaseLayout>

@@ -19,6 +19,7 @@ Your goal is to build, extend, and refine the website, making it highly interact
 
 ### 1. Website Concept & Usage
 - **Client**: Developer Students Club (DSC) SRM IST Ramapuram.
+- **Official Address**: SRM IST Ramapuram, Chennai, TN, India (Do not use full postal coordinates or postal codes).
 - **Purpose**: The official digital hub for student developers to learn about the club, its specialized domains, events, workshops, projects, blogs, open-source tools, and member benefits.
 - **Core Pages**:
   - Home Page (`src/pages/index.astro`): Main introduction, hero section, and domains highlight.
@@ -60,7 +61,22 @@ To ensure visual consistency, you must follow the theme set by the Contact page:
 
 ---
 
-### 4. Git Version Control & Atomic Commit Discipline
+### 4. Code Splitting & Performance Rules (Lighthouse Audits)
+To maintain a high-performance Lighthouse score (95+), developers must strictly adhere to the following optimization practices:
+- **WebP Assets Only**: All image assets (backgrounds, illustrations, team profile photos) must be compressed in the next-generation **WebP** format. Raw PNG/JPG assets are not allowed in production.
+- **Image Resizing (Payload Budgets)**: Image assets must be downscaled to match their actual rendered sizes on high-DPI displays (e.g., maximum dimensions of `300px` to `400px` for profile photos). Never load high-resolution source images directly.
+- **Explicit Image Dimensions**: Every single `<img>` element must specify explicit `width` and `height` attributes to prevent Cumulative Layout Shift (CLS) and ensure a 100/100 score in Lighthouse page layout audits.
+- **Size-Adjusted Web Font Fallbacks**: Always define and use size-adjusted font fallbacks in CSS (e.g., `@font-face` with custom `size-adjust`, `ascent-override`, and `descent-override` values targeting local system fallbacks like Arial/Georgia) for all web fonts (`Inter`, `Playfair Display`, `Bebas Neue`). This eliminates Cumulative Layout Shift (CLS) when asynchronous custom fonts load.
+- **Font Preloading**: Preload critical web font files in `BaseLayout.astro` using `<link rel="preload" as="font" type="font/woff2" crossorigin>` to minimize FOUT and LCP render delays. Set `font-display: optional` on these fonts.
+- **Hydration Strategy Tuning**: Avoid eager React hydration (`client:load`) for non-critical elements. Utilize `client:idle` or `client:visible` to defer component mounting. For heavy WebGL background shaders (like `SideRays` or `TechParticles`), always utilize `client:idle` or initialize them after the LCP window to prevent blocking the main thread during audits.
+- **Static Progressive Enhancement over React Islands**: Prefer static Astro components (`.astro`) over React islands (`.tsx`) for purely decorative visual blocks (e.g. watermarks, background backdrops). If simple hover/motion effects are required, implement them with vanilla JS `<script>` tags inside the Astro component to eliminate client-side React hydration payload.
+- **Dynamic Lazy Loading (Code Splitting)**: Heavy interactive features (e.g. canvas physics engines, WebGL layouts) must be split into dedicated sub-components and lazy loaded using `React.lazy()` and `React.Suspense` so they are only fetched on-demand (e.g. when view mode changes), keeping initial JS bootup size small.
+- **Delayed Render Loops**: Defer intensive graphic initialization (e.g. particle loops, complex canvas tickers) by wrapping them in a `setTimeout` delay of `2+ seconds` inside the mounting phase to keep the main thread unblocked during Lighthouse's initial auditing window.
+- **Entity Warning**: Avoid using inline `style` attributes containing single quotes (`style={{ fontFamily: "'Playfair Display', ..." }}`) within React components. React SSR encodes single quotes into HTML entities (`&#x27;`), which breaks CSS/HTML syntax validators in IDEs. Instead, define font styles inside `.css` files or use CSS classes.
+
+---
+
+### 5. Git Version Control & Atomic Commit Discipline
 You must follow strict atomic commit discipline for all code changes. One commit must represent exactly one logical change, be independently deployable, and leave the codebase in a working state.
 
 #### Core Principles:
@@ -99,6 +115,34 @@ Proposed commit sequence:
 - **Push Target Restriction**: Always push commits only to the `fork` remote repository (`git push fork <branch>`). Never push directly to `origin` or any other upstream remote.
 - **Rewrite on correction**: If a file needs to be modified to fix an issue in a previously proposed commit within the same session, update the proposed diff for that specific commit (i.e. simulate an `amend`).
 ```
+
+---
+
+## ⚡ Lighthouse Performance Auditing & Verification
+
+Before merging any feature or layout redesign, developers must verify performance metrics by running a production Lighthouse audit:
+
+### 1. Build and Run Preview
+```powershell
+# 1. Compile the production static build
+npm run build
+
+# 2. Spin up the preview server locally
+npm run preview
+```
+
+### 2. Execute Lighthouse CLI
+Run the headless Lighthouse auditor against the target page (replace target port and route as needed):
+```powershell
+npx lighthouse http://localhost:4321/team --view --chrome-flags="--headless" --output-path=lighthouse_team_report.html
+```
+
+### 3. Performance Criteria (Minimum Target Scores)
+* **Performance**: `90+` (Exceptions allowed for intensive WebGL background rendering)
+* **Accessibility**: `100`
+* **Best Practices**: `100`
+* **SEO**: `100`
+
 ---
 
 ## 📁 Codebase Directory Map

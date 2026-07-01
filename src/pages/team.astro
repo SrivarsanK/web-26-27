@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.tsx';
 import Footer from '../components/Footer.tsx';
 import SideRays from '../components/SideRays.tsx';
-import Watermark from '../components/Watermark.tsx';
+import Watermark from '../components/Watermark.astro';
 import TeamArtCutouts from '../components/TeamArtCutouts.tsx';
 import TeamShowcase from '../components/TeamShowcase.tsx';
 import TechParticles from '../components/TechParticles.tsx';
@@ -31,7 +31,7 @@ import '../styles/contact.css';
   </div>
 
   <!-- Interactive Background Canvas Particles (React Island) -->
-  <TechParticles client:load />
+  <TechParticles client:idle />
 
   <!-- Decorative Corner Circuit Board Graphics -->
   <svg class="corner-graphic corner-top-left" width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,10 +70,10 @@ import '../styles/contact.css';
     <div class="contact-layout-wrapper" style="--watermark-size: clamp(6.5rem, 22vw, 16rem);">
       
       <!-- Reusable 3D Parallax Watermark component -->
-      <Watermark client:load text="TEAM" />
+      <Watermark text="TEAM" />
 
       <!-- Interactive Background Art Cutouts (React Island) -->
-      <TeamArtCutouts client:load />
+      <TeamArtCutouts client:idle />
 
       <!-- Title / Intro Header -->
       <section class="team-header-intro">
@@ -83,8 +83,8 @@ import '../styles/contact.css';
       </section>
 
       <!-- Team Showcase Cards Grid (React Island) -->
-      <section class="team-showcase-section" style="position: relative; z-index: 10;">
-        <TeamShowcase client:load />
+      <section class="team-showcase-section" style="position: relative; z-index: 10; min-height: 1050px;">
+        <TeamShowcase client:idle />
       </section>
 
       <!-- Bottom Interactive Call to Action Block -->
@@ -110,7 +110,7 @@ import '../styles/contact.css';
   </main>
 
   <!-- Footer (React Island) -->
-  <Footer client:load active="team" />
+  <Footer client:visible={{ rootMargin: '100px' }} active="team" />
 
 </BaseLayout>
 
@@ -215,12 +215,14 @@ import '../styles/contact.css';
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-
   window.addEventListener('DOMContentLoaded', () => {
-    gsap.fromTo(".intro-subtext",
-      { opacity: 0, y: 15, filter: 'blur(4px)' },
-      { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
-    );
+    setTimeout(() => {
+      import('gsap').then(({ gsap }) => {
+        gsap.fromTo(".intro-subtext",
+          { opacity: 0, y: 15, filter: 'blur(4px)' },
+          { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
+        );
+      });
+    }, 2500);
   });
 </script>

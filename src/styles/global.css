@@ -5,8 +5,35 @@
 
 /* Fonts loaded via async <link> in BaseLayout.astro head for non-blocking delivery */
 @import "tailwindcss";
-* { font-family: 'Inter', sans-serif; }
-.font-playfair { font-family: 'Playfair Display', serif; }
+
+/* Size-adjusted fallbacks to eliminate CLS on font swap */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Playfair Fallback';
+  src: local('Georgia');
+  size-adjust: 115%;
+  ascent-override: 85%;
+  descent-override: 20%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Roboto Fallback';
+  src: local('Arial');
+  size-adjust: 101%;
+  ascent-override: 92%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+* { font-family: 'Inter', 'Inter Fallback', sans-serif; }
+.font-playfair { font-family: 'Playfair Display', 'Playfair Fallback', serif; }
 
 @keyframes heroReveal { 0%{opacity:0;transform:translateY(28px);filter:blur(12px)} 100%{opacity:1;transform:translateY(0);filter:blur(0)} }
 @keyframes heroFadeUp { 0%{opacity:0;transform:translateY(20px)} 100%{opacity:1;transform:translateY(0)} }
@@ -1313,6 +1340,13 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.contra-footer-logo {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-size: 2.5rem !important;
+  letter-spacing: normal !important;
 }
 
 .contra-logo .serif {

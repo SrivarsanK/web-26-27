@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
-import TeamNetworkGraph from './TeamNetworkGraph';
+
+const TeamNetworkGraph = lazy(() => import('./TeamNetworkGraph'));
 
 interface Member {
   name: string;
@@ -18,7 +19,7 @@ const MEMBERS: Member[] = [
     name: 'Karthik Rajan',
     role: 'President',
     domain: 'presidency',
-    image: '/team/karthik-rajan.png',
+    image: '/team/karthik-rajan.webp',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -28,7 +29,7 @@ const MEMBERS: Member[] = [
     name: 'Aditya Kumar',
     role: 'Technical Lead',
     domain: 'technical',
-    image: '/team/aditya-kumar.png',
+    image: '/team/aditya-kumar.webp',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -38,7 +39,7 @@ const MEMBERS: Member[] = [
     name: 'Deepika Menon',
     role: 'Creatives Lead',
     domain: 'creatives',
-    image: '/team/deepika-menon.png',
+    image: '/team/deepika-menon.webp',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -48,7 +49,7 @@ const MEMBERS: Member[] = [
     name: 'Sneha Patel',
     role: 'Operations Lead',
     domain: 'operations',
-    image: '/team/sneha-patel.png',
+    image: '/team/sneha-patel.webp',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -58,7 +59,7 @@ const MEMBERS: Member[] = [
     name: 'Rahul Anand',
     role: 'Machine Learning',
     domain: 'technical',
-    image: '/team/rahul-anand.png',
+    image: '/team/rahul-anand.webp',
     github: 'https://github.com',
     linkedin: 'https://linkedin.com',
     email: 'mailto:dsc.srmrmp@gmail.com',
@@ -302,7 +303,9 @@ export default function TeamShowcase() {
       ) : (
         /* Render Interactive Network Canvas Graph view */
         <div className="graph-view-wrapper">
-          <TeamNetworkGraph onSelectMember={handleSelectMember} />
+          <Suspense fallback={<div className="graph-loading-placeholder" style={{ padding: '40px', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', textAlign: 'center' }}>Loading network physics graph...</div>}>
+            <TeamNetworkGraph onSelectMember={handleSelectMember} />
+          </Suspense>
 
           {/* Highlight card detail panel when clicking graph node */}
           {selectedGraphMember ? (

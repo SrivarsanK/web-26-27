@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@800;900&display=swap');
-
 /* contact.css */
 
 :root {
@@ -10,7 +8,7 @@
   --accent-glow: #1dd1a1;
   --card-bg: rgba(17, 23, 20, 0.3);
   --input-bg: rgba(14, 19, 16, 0.45);
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Inter', 'Inter Fallback', sans-serif;
   --container-pad-top: 160px;
 }
 
@@ -35,7 +33,7 @@ body {
   top: var(--watermark-offset);
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Bebas Neue', 'Bebas Neue Fallback', sans-serif;
   font-weight: 400;
   font-size: var(--watermark-size);
   line-height: 1;
@@ -49,6 +47,7 @@ body {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.16) 50%, rgba(255, 255, 255, 0) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  contain: layout;
 }
 
 /* Marquee Styles */
@@ -78,6 +77,8 @@ body {
   display: flex;
   width: fit-content;
   animation: dsc-marquee 25s linear infinite;
+  will-change: transform;
+  transform: translateX(0);
 }
 .dsc-marquee-item {
   display: flex;
@@ -91,6 +92,7 @@ body {
   color: #14a3a3;
   margin: 0 32px;
   font-size: 14px;
+  contain: layout style;
 }
 
 
