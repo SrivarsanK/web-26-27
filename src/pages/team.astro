@@ -83,8 +83,8 @@ import '../styles/contact.css';
       </section>
 
       <!-- Team Showcase Cards Grid (React Island) -->
-      <section class="team-showcase-section" style="position: relative; z-index: 10;">
-        <TeamShowcase client:visible={{ rootMargin: '200px' }} />
+      <section class="team-showcase-section" style="position: relative; z-index: 10; min-height: 1050px;">
+        <TeamShowcase client:idle />
       </section>
 
       <!-- Bottom Interactive Call to Action Block -->
@@ -215,12 +215,14 @@ import '../styles/contact.css';
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-
   window.addEventListener('DOMContentLoaded', () => {
-    gsap.fromTo(".intro-subtext",
-      { opacity: 0, y: 15, filter: 'blur(4px)' },
-      { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
-    );
+    setTimeout(() => {
+      import('gsap').then(({ gsap }) => {
+        gsap.fromTo(".intro-subtext",
+          { opacity: 0, y: 15, filter: 'blur(4px)' },
+          { opacity: 0.6, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power2.out' }
+        );
+      });
+    }, 2500);
   });
 </script>
