@@ -77,7 +77,6 @@ body {
   display: flex;
   width: fit-content;
   animation: dsc-marquee 25s linear infinite;
-  animation-delay: 2s;
   will-change: transform;
   transform: translateX(0);
 }
